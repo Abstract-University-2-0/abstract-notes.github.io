@@ -1,0 +1,130 @@
+@font-face {
+    font-family: CormorantBold;
+    src: url("./Fonts/Cormorant_Garamond/CormorantGaramond-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: CormorantRegular;
+    src: url("./Fonts/Cormorant_Garamond/CormorantGaramond-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: RubikMonoOne;
+    src: url("./Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf") format("truetype");
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5e6;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: "RubikMonoOne", sans-serif;
+}
+
+a {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+a:hover {
+    color: white;    
+}
+
+a:visited {
+    text-decoration: underline;
+    /* color: inherit; */
+}
+
+.white {
+    color: white;
+}
+
+.top {
+    background-color: #fae5ca;
+}
+
+.big_header {
+    padding: 20px;
+    font-size: 50px;
+    padding-left: 10%;
+}
+
+.small_header {
+    font-size: 32px;
+}
+
+.main {
+    background-color: #a84646;
+    border-radius: 40px;
+    width: 72%;
+    /* text-align: center; */
+    margin-left: calc(10%);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-top: 20vh;
+    margin-bottom: calc(20vh);
+}
+
+.links_wrap {
+    /* width: 92%; 
+    text-align: center;*/
+    padding: 30px;
+}
+
+.block1 {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    word-break: break-all;
+}
+
+.block2{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    word-break: break-word;
+}
+
+.matan_link {
+    font-size: 30px;
+    color:#bbec8b;
+}
+
+.diffury_link {
+    font-size: 30px;
+    color:#d9b9f5
+}
+
+.git_link {
+    color:#339475;
+    font-size: 25px;
+}
+
+.git {
+    padding-right: 10%;
+}
+
+.footer {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: right;
+    float: right;
+    background-color: #ffb85c;
+    margin-bottom: 10px;
+}
+
+.underfooter {
+    height: 500px;
+    background-color: #a84646;
+}
