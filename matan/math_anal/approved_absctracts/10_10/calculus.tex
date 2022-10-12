@@ -1,0 +1,229 @@
+\input{../../../preamble.tex}
+
+\begin{document}
+    \title{Математический анализ}
+    \date{10 октября 2022}
+    \maketitle
+
+    \pagebreak
+
+    $\Pi \subset \pi_1 \times \Pi_2 \subset \R^n \times \R^m, \ f : \Pi \rightarrow \R$ огр и почти везде непр.
+
+    \begin{remark}
+        $ $
+        \begin{enumerate}
+            \item \[
+                \rhimani{\Pi} f = \rhimani{\Pi_2} dy \lrhimani{\Pi_1} f(x, y) dx = \rhimani{\Pi_2} \urhimani{\Pi_1} f(x, y) dx
+                \]
+            \item Если $\forall y \in \Pi_2 \ \exists \rhimani{\Pi_1}f(x, y) dx$, то \[
+                \rhimani{\Pi} f = \rhimani{\Pi_2} \rhimani{\Pi_1}f(x, y)dx   
+            \]
+        \end{enumerate}
+    \end{remark}
+
+    \begin{illustration}
+        $\Pi_1 = \Pi_2 = [0, 1]$
+        \[
+            f(x, y) = \begin{cases}
+                1, \ x \in [0,1] \setminus \Q, \ y \in [0, 1] \setminus \Q \\
+                1 - \frac 1 q, \ x = \frac p q, \ y \in [0, 1]
+            \end{cases}    
+        \]
+        \par f непрерывна на $([0, 1] \setminus \Q)^2$
+        \par $(x, y) \in ([0, 1] \setminus \Q)^2, \quad f(x, y) = 1$
+        % РИСУНОК
+        \par $\forall \epsilon, \ \exists Q : \frac 1 Q < \epsilon$ \quad и $\forall q > 0 : \left|1-\frac 1 q - 1\right| < \epsilon$
+        \par $f$ почти везде непр. на $[0,1]^2 = \Pi$, огр., $\Rightarrow \exists \rhimani{\Pi} f$
+        \newline
+        \par $x \in [0,1] \setminus \Q: \quad \lrhimani{\Pi_2} f(x, y) dy = \urhimani{\Pi_2}f(x,y)dy = \rhimani{\Pi_2} 1 = 1$
+        \par $x \in [0,1] \cap \Q: \quad \lrhimani{\Pi_2} f(x,y)dy  = 1 - \frac{1}{q}, \quad \urhimani{\Pi_2}f(x, y) = 1$
+        \[
+            \mathcal L(x) = \begin{cases}
+                1, \ x \in [0, 1] \setminus \Q \\
+                1 - \frac 1 q, \ x = \frac p 1, \ \text{ неогр}
+            \end{cases}   
+        \]
+        \[
+            \mathcal{U}(x) = 1    
+        \]
+        \[
+            \rhimani{\Pi_1} \mathcal{L} = 1 = \rhimani{\Pi_1} \mathcal{U} = \rhimani{\Pi} f    
+        \]
+    \end{illustration}
+
+    \begin{illustration}
+        $E \subset \Pi = [a, b] \times [c, d], \ \mu (\partial E) = 0$
+        \par $f \in C(E) \quad \tilde{f} = f \cdot \chi_E$
+        \[
+            \rhimani{E} f = \rhimani{\Pi} \tilde{f} = \int_a^b dx \int_c^d \tilde{f}(x, y)dy = \int_c^d dy \in_a^b f(x, ydx)    
+        \]
+        \[
+            E = \{(x, y) \in \Pi \ | \ a \le x \le b, \ y_1(x) \le y \le y_2(x)\} = \{(x, y) \in \Pi \ | \ c \le y \le d , \ x_1(y) \le x \le x_2(y)\}   
+        \]
+        \[
+            \rhimani{E} f = \int_a^b dx = \int_{y_1(x)}^{y_2(x)} f(x, y) dy = \int_c^d dy \int_{x_1(y)}^{x_2(y)} fx(x, y)dx    
+        \]
+    \end{illustration}
+
+    \begin{remark}
+        $f \in C([0, 1])$
+        \par Тогда $\mu(\text{графика } f) = 0, \quad$ график $f = \{(x, f(x)) \ | x \in [0, 1]\}$
+    \end{remark}
+    \begin{proof}
+        $\Rightarrow [0, 1] \text{ компакт} \Rightarrow f $ равномерно непрерывна на $[0, 1]$
+        \[
+            \epsilon > 0 \ \exists \delta > 0 : \forall x_1, x_2 \in [0, 1] : |x_1 - x_2| < \delta \quad |f(x_1) - f(x_2)| < \epsilon
+        \]
+        \[
+            \left[\frac 1 \delta\right] + 1 \text{ интервалов}    
+        \]
+        \[
+            2\epsilon \frac \delta 2 \cdot \underbrace{\left(\left[\frac 2 \delta\right] + 1\right)}_{< 2 \cdot \left[\frac 2 \delta\right]} < 4 \epsilon \frac \delta 2 \left[\frac 2 \delta\right] < 4 \epsilon
+        \] % МЕНЬШЕ ЧЕМ В ДВА РАЗА БОЛЬШЕ 😳 
+        \par \text{\small(любой прямоугольник можно покрыть квадратами сумма площадей которых}
+        \par \text{\small не больше чем в 2 раза больше площади прямоугольника)} % ДОДЕЛАТЬ
+        \par $\Rightarrow \exists$ покрытие квадратами $\sum v(C) < 8 \epsilon$
+    \end{proof}
+
+    $\mu(E) = 0, \quad f : E \rightarrow \R$ огр. и почти везде непрерывна $\cancel \Rightarrow \rhimani{\Pi} f = 0$
+    \par $E = [0,1] \cap \Q, \ f \equiv 1, \ f : E \rightarrow \R$
+    \[
+        \tilde f(x) = f(x)\chi_E^{(x)} = \begin{cases}
+            1, \ x\in E \\
+            0, \ x \in [0,1] \setminus \Q
+        \end{cases}    
+    \]
+    \[
+        \not\exists \rhimani{[0, 1]} \tilde f, \exists \rhimani{E}f    
+    \]
+    \par $v(E) = 0 \Rightarrow E$ измерима по Жордану и его жорданов объем = 0
+    
+    \begin{proof}
+        $v(E) = 0 : \forall \epsilon > 0 \ \exists C_k, \ k = 1, \dots, N \text{ (кубы )} : E \subset \bigcup_{k=1}^N C_k$,
+        \par $\sum_{k=1}^N v(C_k) < \epsilon$
+        \par $\partial E \subset \bar E \subset \bigcup_{k=1}^N C_k$
+        \par $\Rightarrow v(\bar E) = 0, \ v(\partial E) = 0 \Rightarrow \mu(\partial E) = 0 \Rightarrow E$ измеримо по Жордану
+        \par $\exists \Pi \quad E \subset \Pi \quad \forall \epsilon \ E \subset \bigcup_{k=1}^N C_k$
+        \par \quad можно считать, что $\forall k \ C_k \in \Pi$
+        \par $ $
+        \par Пусть $p$ -- разбиение $\Pi$ гранями всех $C_k$
+        \[
+            v(E) = \rhimani{E} 1 = \rhimani{\Pi} \chi_E \le U(\chi_E, p) = \sum_{\pi \in p} \sup_\pi \chi_E \cdot v(\pi) =  
+        \] 
+        \[
+            \sum_{\begin{aligned}
+                \pi \in p \\
+                \pi \in \bigcup_{k = 1}^N C_k
+            \end{aligned}} v(\pi) \le \sum_{k=1}^N v(C_k) < \epsilon \Rightarrow v(E) = 0
+        \]
+    \end{proof}
+
+    \begin{lemma}
+        $\Pi \subset \R^n , \ f_1, f_2 : \Pi \rightarrow \R$ огр., почти везде непр.
+        \par $\Rightarrow a_1f_1 + a_2f_2$ -- огр. и почти везде непр.
+        \[
+            \rhimani{\Pi} (a_1f_1 + a_2f_2) = a_1 \rhimani{\Pi_1} f + a_2 \rhimani{\Pi_2} f    
+        \]
+    \end{lemma}
+    \begin{proof}
+        Рассмотрим $p, \Xi$
+        \[
+            \sum(a_1f_1 + a_2f_2, p, \Xi) = \sum(a_1f_1(\xi(\pi)) + a_2f_2(\xi(\pi))) \cdot v(\pi)     
+        \]
+        \[
+            = a_1 \sum(f_1, p, \Xi) + a_2\sum(f_2, p, \Xi)    
+        \]
+        \par Пусть $p_k, \ k \in \N, \ d(p_k) \xrightarrow[k \rightarrow \infty]{} 0, \ \Xi_k, \ k \in \N : \rhimani{\Pi}(a_1f_1 + a_2f_2)$
+        \par $= a_1 \rhimani{\Pi} f_1 + a_2\rhimani{\Pi} f_2$
+    \end{proof}
+
+    \begin{lemma}
+        $E_1, E_2$ -- измеримы по Жордану, $E_1 \cap E_2 = \emptyset$
+        \[
+            f : E_1 \cup E_2 \rightarrow \R \quad \text{огр и почти везде непр}    
+        \]
+        \[
+            \rhimani{E_1 \cup E_2} f = \rhimani{E_1} f + \rhimani{E_2} f    
+        \]
+    \end{lemma}
+    \begin{proof}
+        $\tilde f = f \cdot \chi_E$
+        \par $\Pi \supset E_1 \cup E_2$
+        \par $\rhimani{E_1 \cup E_2} f = \rhimani{\Pi} f \chi_{E_1 \cup E_2} = \rhimani{\Pi} f\chi_{E_1} + \rhimani{\Pi} f\chi_{E_2}$
+    \end{proof}
+
+    \begin{lemma}
+        $\Pi \subset \R^n, \ f : \Pi \rightarrow \R$ огр и почти везде непр
+        \[
+            \Rightarrow \left|\rhimani{\Pi} f\right| \le \rhimani{\Pi} |f|    
+        \]
+    \end{lemma}
+    \begin{proof}
+        $p_k, \ d(p_k) \rightarrow 0, \Xi_k$
+        \[
+            |\sum(f, p_k, \Xi_k| = |\sum_{\pi \in p_k} f(\xi(\pi)) v(\pi)| \le \sum_{\pi \in p_k} |f(\xi(\pi)) \cdot v(\pi)| \xrightarrow[k \rightarrow \infty]{} \rhimani{\Pi} |f|    
+        \]
+    \end{proof}
+
+    \begin{lemma}
+        $v(E) = 0, \ f : E \rightarrow \R$ огр
+        \par $\Rightarrow \rhimani{E} f = 0$
+    \end{lemma}
+    \begin{proof}
+        $E \subset \Pi$
+        \[
+            \forall \epsilon : E\subset \bigcup_{k=1}^N C_k, \ \sum_{k=1}^N v(C_k) < \epsilon
+        \]
+        \[
+            \exists M > 0 : \forall x \in E \ |f(x)| < M \Rightarrow |\tilde f(x)| < M, \ \forall x \in \Pi   
+        \]
+        \par Разрежем $\Pi$ гранями $C_l=k, \ k = 1, \dots, N \rightarrow $ разбиение $p$
+        \[
+            |\rhimani{E} f| = |\rhimani{\Pi} f \chi_E| \le \rhimani{\Pi} |f| \chi_E \le U(|f| \chi_E, p) =    
+        \]
+        \[
+            = |U(f, p)| = |\sum_{\pi \in p} \sup_{\pi} f \chi_E \cdot v(\pi)| \le \sum_{\begin{aligned}
+                \pi \in p \\
+                \pi \in \bigcup_{k = 1}^N C_k
+            \end{aligned}} M \cdot v(\pi) \le M \sum_{k=1}^N v(C_k) \le M \epsilon
+        \]
+        \par $\epsilon$ произвольная $\Rightarrow \rhimani{E} f = 0$
+    \end{proof}
+
+    \subsection*{Замена переменной в интеграле}
+
+    $E \subset \R^n, f : E \rightarrow \R$
+    \par $\supp f = \{\overline{x : f(x) \not= 0}\}$
+
+    \begin{remark}
+        Пусть $G \subset \R^n$ отрктыо и ограничено
+        \par $f : G \rightarrow \R$ ограничена и почти везде непрерывна
+        \par Если $\supp f \subset G$, то $\exists \rhimani{G} $ \quad (независимо от того, какая $\delta G$)
+    \end{remark}
+    \begin{proof}
+        $\exists \Pi : G \subset \Pi, \ \supp f \subset \Int \Pi, \quad \tilde f : \Pi \rightarrow \R$ -- продолжение $f$ с нулем
+        \par $\{\text{т. разрыва } \tilde f\} = \{\text{т. разрыва} \tilde f \text{ на } \supp f\} \cup \{\text{т. разрыва } \tilde f \text{ в } \Int \Pi \setminus \supp f \text{ -- откр}\} \cup $
+        \par $\cup \{\text{т. разрыва } \tilde f \text{ на } \delta\Pi\} = \emptyset$
+        \par $\dist \{\delta\Pi, \ \supp f\} > 0$
+        \par $\hat f\big|_{\Pi \setminus \supp f} \equiv 0$
+        \par $ $
+        \par $\{\text{т. разрыва } \tilde f \text{ на } \supp f\} \subset \{\text{т. разрыва } f \text{ на } G\}$ -- множество меры 0
+    \end{proof}
+
+    \begin{theorem}
+        Пусть $G \subset \R^n$ открыто и ограничено,
+        \par \quad $g : G \rightarrow \R^n$ диффеоморфизм,
+        \par \quad $g(G)$ ограничено
+        \par \quad $f : g(G) \rightarrow \R$ ограничена и почти везде непрерывна
+        \par \quad $\supp f \subset g(G)$
+        \par Тогда $\exists \rhimani{G} f \circ g |\det g'|$ и
+        \[
+            \rhimani{g(G)} = \rhimani{G} f \circ g \cdot |\det g'|    
+        \]
+    \end{theorem}
+    
+    \begin{definition}
+        $G$ называется областью, если $G$ открыто и связно
+    \end{definition}
+
+\end{document}
