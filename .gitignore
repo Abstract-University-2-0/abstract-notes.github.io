@@ -1,0 +1,8 @@
+# latexmk temp files
+**.aux
+**.fls
+**.log
+**.out
+**.synctex.*
+**.fdb_latexmk
+diff_eq/bilety/diffury_bilety.pdf
