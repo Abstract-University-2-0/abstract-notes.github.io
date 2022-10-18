@@ -1,0 +1,51 @@
+@font-face {
+    font-family: RubikMonoOne;
+    src: url("./Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf") format("truetype");
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5e6;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: "RubikMonoOne", monospace;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
+
+.index_link {
+    font-size: 25px;
+    font-family: monospace;
+    color:#a84646;
+}
+
+.top {
+    background-color: #fae5ca;
+    font-family: "RubikMonoOne";
+}
+
+.big_header {
+    padding: 20px;
+    font-size: 50px;
+    padding-left: 10%;
+}
+
+.back {
+    margin-left: 10%;
+    font-size: 32px;
+}
+
+.index_list {
+    padding-left: 12%;
+}

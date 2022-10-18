@@ -40,6 +40,20 @@ a:visited {
     /* color: inherit; */
 }
 
+button {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    text-decoration: none;
+    border: none;
+    background: none;
+}
+
+button:hover {
+    color: white;
+    cursor: pointer;
+}
+
 .white {
     color: white;
 }
@@ -98,11 +112,15 @@ a:visited {
 .matan_link {
     font-size: 30px;
     color:#bbec8b;
+    font-family: "RubikMonoOne";
+    text-decoration: underline;
 }
 
 .diffury_link {
     font-size: 30px;
-    color:#d9b9f5
+    color:#d9b9f5;
+    font-family: "RubikMonoOne";
+    text-decoration: underline;
 }
 
 .git_link {
@@ -127,4 +145,9 @@ a:visited {
 .underfooter {
     height: 500px;
     background-color: #a84646;
+}
+
+.body_wrap {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
