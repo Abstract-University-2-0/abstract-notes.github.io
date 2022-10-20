@@ -38,9 +38,13 @@ fi
 
 echo "nice"
 
-git branch -d bash_copy
+git branch bash_copy
 git checkout bash_copy
 git add --all
 git commit -m "notes updated"
 git push origin bash_copy
+git checkout main
+sleep 3s
+git pull
+git branch -d bash_copy
 echo "done."
