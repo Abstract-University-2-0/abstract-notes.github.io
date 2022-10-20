@@ -3,7 +3,7 @@ let months = [
     "марта", "апреля",
     "мая", "июня",
     "июля", "августа",
-    "сентярбя", "октября",
+    "сентября", "октября",
     "ноября", "декабря"
 ];
 
@@ -22,7 +22,7 @@ function parse_date(date) {
         return [day, "wtf"]
     }
 
-    return [day, months[Number(month)]]
+    return [day, months[Number(month) - 1]]
 };
 
 async function fetchNotes() {
