@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $2 == pull ]]; then
+if [[ $2 == pull || $1 == pull ]]; then
   echo "pulling from remote..."
   git pull
 fi
@@ -10,7 +10,7 @@ echo
 
 cp ../zimch_git/diff_eq/ ./diffury/ -r
 
-echo -ne "diff_eq copied..." 
+echo -ne " diff_eq copied..." 
 echo
 
 echo -ne "copying math_anal/ \r"
@@ -18,7 +18,7 @@ echo
 
 cp ../zimch_git/math_anal/ ./matan/ -r
 
-echo -ne "matan copied..."
+echo -ne " matan copied..."
 echo
 
 echo "copying finished"
@@ -44,4 +44,4 @@ git checkout bash_copy
 git add --all
 git commit -m "notes updated"
 git push origin bash_copy
-echo "done. please visit github to merge newly created branch"
+echo "🙂 Done. please visit github to merge newly created branch"
