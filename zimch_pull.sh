@@ -1,5 +1,7 @@
+#!/bin/bash
+
 cd ../zimch_git
-echo "currently on $(pwd)"
+echo "currently in $(pwd)"
 git checkout main
 git pull
 echo "done"
