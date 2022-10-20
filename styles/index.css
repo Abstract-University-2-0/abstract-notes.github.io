@@ -33,6 +33,7 @@ a:hover {
 .top {
     background-color: #fae5ca;
     font-family: "RubikMonoOne";
+    word-break: break-all;
 }
 
 .big_header {
