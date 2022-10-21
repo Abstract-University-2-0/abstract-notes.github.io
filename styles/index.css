@@ -66,7 +66,7 @@ a:hover {
     width: 100%;
 }
 
-.index_list {
+#index_list {
     /* padding-left: 12%; */
     display: inline-block;
     width: calc(30% - 40px - 10%);  /*лист 40 пикселей ест*/
@@ -76,7 +76,7 @@ a:hover {
     padding-left: 10%;
 }
 
-.index_pdf {
+#index_pdf {
     display: inline-block;
     width: 60%;
     background-color: #acacac;
