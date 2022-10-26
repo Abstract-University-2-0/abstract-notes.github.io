@@ -69,7 +69,7 @@ a:hover {
 #index_list {
     /* padding-left: 12%; */
     display: inline-block;
-    width: calc(30% - 40px - 10%);  /*лист 40 пикселей ест*/
+    width: calc(25% - 40px - 10%);  /*лист 40 пикселей ест*/
     padding-left: 40px;
     vertical-align: top;
     padding-top: 20px;
@@ -78,9 +78,9 @@ a:hover {
 
 #index_pdf {
     display: inline-block;
-    width: 60%;
+    width: 50%;
     background-color: #acacac;
-    height: 100vh;
+    height: 92vh;
     border: 5px solid #a84646;
     /* border-radius: 15px; */
     /* padding: 5px; */
@@ -89,7 +89,7 @@ a:hover {
 }
 
 .index_button {
-    font-size: 25px;
+    font-size: 3vh;
     font-family: monospace;
     color:#a84646;
     background-color: #fae5ca;
@@ -97,6 +97,8 @@ a:hover {
     margin-top: 5px;
     margin-bottom: 5px;
     word-break: break-all;
+
+    width: 100%;
 }
 
 .index_button:hover {
