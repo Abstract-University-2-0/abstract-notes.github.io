@@ -42,7 +42,7 @@ async function fetchNotes() {
     const button = linkList.appendChild(document.createElement('button'));
     button.id = `m${file.name}`;
     button.className = 'index_button';
-    button.textContent = `лекция ${day} ${month}`;
+    button.textContent = `${day} ${month}`;
     button.filename = file.name
     button.onclick = (e) => {
       frame.src = `https://docs.google.com/viewer?url=${ghUrlPrefix}${e.target.id.substring(1)}/calculus.pdf&embedded=true`;
