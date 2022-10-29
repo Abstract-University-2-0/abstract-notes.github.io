@@ -69,16 +69,16 @@ a:hover {
 #index_list {
     /* padding-left: 12%; */
     display: inline-block;
-    width: calc(25% - 40px - 10%);  /*лист 40 пикселей ест*/
+    width: max(calc(20% - 40px - 12%), 5em);  /*лист 40 пикселей ест*/
     padding-left: 40px;
     vertical-align: top;
     padding-top: 20px;
-    padding-left: 10%;
+    padding-left: 3.5%;
 }
 
 #index_pdf {
     display: inline-block;
-    width: 50%;
+    width: min(max(50%, 860px), calc(100vw - 20% - 40px));
     background-color: #acacac;
     height: 92vh;
     border: 5px solid #a84646;
@@ -89,7 +89,7 @@ a:hover {
 }
 
 .index_button {
-    font-size: 3vh;
+    font-size: max(3vh, 1vw);
     font-family: monospace;
     color:#a84646;
     background-color: #fae5ca;
@@ -97,7 +97,6 @@ a:hover {
     margin-top: 5px;
     margin-bottom: 5px;
     word-break: break-all;
-
     width: 100%;
 }
 

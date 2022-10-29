@@ -42,8 +42,9 @@ async function fetchNotes() {
     const button = linkList.appendChild(document.createElement('button'));
     button.id = `m${file.name}`;
     button.className = 'index_button';
-    button.textContent = `${day} ${month}`;
+    button.textContent = `${file.name.split("_")[1]}.${file.name.split("_")[0]}`//`${day} ${month}`;
     button.filename = file.name
+    button.title = `лекция ${day} ${month}`
     button.onclick = (e) => {
       frame.src = `https://docs.google.com/viewer?url=${ghUrlPrefix}${e.target.id.substring(1)}/calculus.pdf&embedded=true`;
       console.log('pfd updated');
