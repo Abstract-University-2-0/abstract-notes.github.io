@@ -8,9 +8,9 @@ const months = [
 ];
 
 const ghUrlPrefix = "https://raw.githubusercontent.com/zimch/" +
-  "abstracts/main/math_anal/approved_absctracts/";
+  "abstracts/main/calculus/approved_absctracts/";
 const repoAddr = 'https://api.github.com/repos/zimch/abstracts' +
-  '/contents/math_anal/approved_absctracts';
+  '/contents/calculus/approved_absctracts';
 const linkList = document.getElementById('index_list');
 const frame = document.getElementById("docframe");
 
