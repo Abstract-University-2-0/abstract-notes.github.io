@@ -16,7 +16,7 @@ echo
 echo -ne "copying math_anal/ \r"
 echo
 
-cp ../zimch_git/math_anal/ ./matan/ -r
+cp ../zimch_git/calculus/ ./matan/ -r
 
 echo -ne " matan copied..."
 echo

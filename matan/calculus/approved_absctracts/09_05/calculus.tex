@@ -2,12 +2,13 @@
 
 \begin{document}
     
-    \title{Математический анализ}
-    \date{5 сентября 2022}
-    \maketitle{}
+    % \title{Математический анализ}
+    % \date{5 сентября 2022}
+    % \maketitle{}
 
-    \pagebreak
-    \section*{Повторение}
+    % \pagebreak
+    %\section*{Повторение}
+    {\noindent\Large\textbf{Повторение}} \hfill \boxed{\textup{\textbf{5 сентября 2022}}}
     \subsection*{Линейные и нормированные пространства}
     
     $\mathit{L}$ -- линейное пространство
@@ -38,20 +39,22 @@
     \begin{illustration}
         Неполное нормированное пространство:
         \[
-            C([0; 1]), \quad \| f \|_< = \int_0^1 |f(x)| dx
+            C([0; 1]), \quad \| f \|_L = \int_0^1 |f(x)| dx
         \]
         \[
-            \int_0^\frac12 f_n(x) dx \rightarrow 0 \quad \exists N: n > N < \frac \epsilon 2
+            \int_0^\frac12 f_n(x) dx \rightarrow 0 \implies \exists N: n > N, \int_0^\frac{1}{2} (...) < \frac \epsilon 2
         \]
         \[
-            \int_\frac12^1 (1 - f_n(x)) dx \rightarrow 0 \quad \exists N: n > N < \frac \epsilon 2
+            \int_\frac12^1 (1 - f_n(x)) dx \rightarrow 0 \implies \exists N: n > N, \int^1_\frac{1}{2} (...) < \frac \epsilon 2
         \]
         \[
-            \forall \epsilon \ \exists N \ \forall n, m > \int_0^1 |f_n(x) - f_m(x)| dx < \epsilon   
+            \forall \epsilon \ \exists N \ \forall n, m > N: \int_0^1 |f_n(x) - f_m(x)| dx < \epsilon \text{ -- пос-ть Коши, но нет предела}  
         \]
+        Можно дополнить его до полного, получится:
         \[
-            \mathit{L}(0, 1) = \{ f : [0, 1] \rightarrow \R : \int_0^1 |f_n(x)| dx < \infty \}    
+            \mathit{L}_1(0, 1) = \{ f : [0, 1] \rightarrow \R : \int_0^1 |f_n(x)| dx < \infty \}    
         \]
+        $C([0,1])$ будет полным по другой норме: $\| f \| = \max_{x\in[0,1]} |f(x)|$
     \end{illustration}
 
     \subsection*{Линейные операторы}
@@ -59,13 +62,16 @@
     \begin{definition}
         Линейный оператор
         \[
-            A(\alpha x + \beta y) = \alpha Ax + \beta Ay \quad A : L \rightarrow M \quad \text{, где } M = \R \setminus \C, A \text{ - функционал(?)}    
+            A(\alpha x + \beta y) = \alpha Ax + \beta Ay \quad A : L \rightarrow M, \quad L, M - \text{ любые пространства}
         \]
+        Если $M = \R / \C,$ то $A$ - функционал
     \end{definition}
 
     \begin{remark}
         Операторы из $\R^m$ в $\R^n$ $\leftrightarrow$ матрицы $\Mat^{m, n}$ 
     \end{remark}
+
+    \subsection*{Норма оператора}
 
     \[
         \| A \| = \sup_{x \not= 0} \frac{\| Ax \|_\mathit{M}}{\| x \|_\mathit{L}}, \quad M, L \text{ - нормированные пространства}
@@ -74,10 +80,10 @@
     \begin{illustration}
         Неограниченный оператор:
         \[
-            L = C'([0, 1]), \quad M = C([0, 1]) \quad \| f \| = \sup_{[0, 1]} |f|    
+            L = C^1([0, 1]), \quad M = C([0, 1]) \quad \| f \| = \sup_{[0, 1]} |f|    
         \]
         \[
-            \| f \| = \max_{[0,1]} |f|    
+            \| f \| = \max_{[0,1)} |f|    
         \]
         \[
             (Af)(x) = f'(x)     
@@ -98,7 +104,10 @@
 
     \begin{proposition}
         \[
-            \| A \| = \sup_{x \in B_1(x) \setminus \{ 0 \}} \|Ax \| = \sup_{a \in S_1(0)} \| Ax \| = \sup_{x \in B_1(0) \setminus \{ x \}} = \inf \{c : \| Ax \| \le c \| x \|\} \quad \forall x \in L
+            \| A \| = \sup_{x \in B_1[0] \setminus \{ 0 \}} \|Ax \| = 
+            \sup_{x \in S_1(0)} \| Ax \| = 
+            \sup_{x \in B_1(0) \setminus \{ 0 \}} \|Ax\| = 
+            \inf \{c : \| Ax \| \le c \| x \| \quad \forall x \in L \}
         \]
         \par$B_r(x) = \{ y \in L  : \| y - x \| < r\}$ -- открытый шар радиуса $r$
         \par$B_r[x] = \{ y \in L  : \| y - x \| \le r\}$ -- замкнутый шар радиуса $r$
@@ -129,10 +138,10 @@
 
     \begin{remark}
         \[
-            A : \R^n  \rightarrow \R \ \exists a \in \R^n \ \forall x \in \R^n : Ax = (a; x) \quad \| A \| \underset{B(\R^n, \R)}{=} \| a \|_{\R^n}   
+            A : \R^n  \rightarrow \R \ \exists a \in \R^n \ \forall x \in \R^n : Ax = (a, x) \quad \| A \|_{B(\R^n, \R)} = \| a \|_{\R^n}  %\underset{B(\R^n, \R)}{=} \| a \|_{\R^n}   
         \]
         \[
-            A : \R \rightarrow \R^n \ \exists a \in \R^n \ \exists x \in \R : Ax = a \cdot x \quad \| A \| \underset{B(\R, \R^n)}{=} \| a \|_{\R^n}  
+            A : \R \rightarrow \R^n \ \exists a \in \R^n \ \exists x \in \R : Ax = a \cdot x \quad \| A \|_{B(\R, \R^n)} = \| a \|_{\R^n}  
         \]
     \end{remark}
 
@@ -141,9 +150,9 @@
     $A : L \rightarrow M$ -- линейный оператор
 
     \begin{enumerate}
-        \item $\exists B : M \rightarrow L \ : \ AB = I_M$ -- единственный оператор в пространстве $M$
+        \item $\exists B : M \rightarrow L \ : \ AB = I_M$ -- ед. оператор в пространстве $M$
         \par $B \leftrightharpoons$ правый обратный
-        \item $\exists C : M \rightarrow L \ : \ CA = I_l$ -- ед. оператор в пространстве $L$
+        \item $\exists C : M \rightarrow L \ : \ CA = I_L$ -- ед. оператор в пространстве $L$
         \par $C \leftrightharpoons$ левый обратный
         \item $\exists$ оба и равны, $A^{-1} \leftrightharpoons$ обратный оператор
     \end{enumerate}
@@ -154,46 +163,46 @@
         $A \in B(\R^n), \exists A^{-1}, B \in B(\R^n), \| B - A \| < \frac{1}{\| A^{-1} \|}$
         \par Тогда $B$ обратим,
         \[
-            \| B^{-1} \| \le \frac{1}{\left\| \frac{1}{A^{-1}} \right\| - \| B - A \|}, \| B^{-1} - A^{-1} \| \le \frac{\| A^{-1} \| \cdot \| B - A \|}{\left\|\frac{1}{A^{-1}}\right\| - \| B - A \|}  
+            \| B^{-1} \| \le \frac{1}{\frac{1}{\| A^{-1} \|}  - \| B - A \|},\quad \| B^{-1} - A^{-1} \| \le \frac{\| A^{-1} \| \cdot \| B - A \|}{\frac{1}{\| A^{-1} \|} - \| B - A \|}  
         \]
     \end{theorem}
 
     \begin{proof}
         $x \in \R^n$
         \[
-            \| Bx \| = \| Ax - (A-B)x \| \ge \| Ax \| - \| (B-A)x \| \ge \frac{\| x \|}{\| A^{-1} \|} - \| B-A \| \cdot \| x \| = (\frac{1}{\|A^{-1}\|} - \|B-A\|\|x\|)
+            \| Bx \| = \| Ax - (A-B)x \| \ge \| Ax \| - \| (B-A)x \| \ge \frac{\| x \|}{\| A^{-1} \|} - \| B-A \| \cdot \| x \| = \left(\frac{1}{\|A^{-1}\|} - \|B-A\|\right) \|x\|
         \]
         \par Так как:
         \[
-            \|Ax\| \ge \frac{\|x\|}{\|A^{-1}\|} \quad x = (A^{-1})(Ax) \quad \|x\| \le \|A^{-1}\| \cdot \|Ax\|  
+            \|Ax\| \ge \frac{\|x\|}{\|A^{-1}\|} \impliedby x = (A^{-1})(Ax) \quad \|x\| \le \|A^{-1}\| \cdot \|Ax\|  
         \]
+        
+            $Bx = 0 \Rightarrow \|x\| = 0$, так как  $(\|Bx\| \ge \|x\| \cdot \underbrace{(..)}_{>0}) \Rightarrow x = 0 \quad \Kerr B = \{0\} \Rightarrow \exists B^{-1}$  
+        
         \[
-            Bx = 0 \Rightarrow \|x\| = 0 \Rightarrow x = 0 \quad \Kerr B = \{0\} \Rightarrow \exists B^{-1}  
-        \]
-        \[
-            \begin{matrix} y = Bx \\ x = B^{-1}y \end{matrix} \quad \|y\| \ge (\frac{1}{\|A^{-1}\|} - \|B-A\|)\|B^{-1}y\|, \ \forall y \in \R^n  
+            \begin{matrix} y = Bx \\ x = B^{-1}y \end{matrix} \quad \|y\| \ge \left(\frac{1}{\|A^{-1}\|} - \|B-A\|\right)\|B^{-1}y\|, \ \forall y \in \R^n  
         \]
         \[
             \Rightarrow \|B^{-1}\| \le \frac{1}{\frac{1}{\|A^{-1}\|} - \|B-A\|}    
         \]
         \[
-            B^{-1}A^{-1} = B^{-1}(I-BA^{-1}) = B^{-1}(A-B)A^{-1}
+            B^{-1} - A^{-1} = B^{-1}(I-BA^{-1}) = B^{-1}(A-B)A^{-1}
         \]
         \[
-            \|B^{-1}-A^{-1}\| \le \frac{\|A^{-1}\| \cdot \|B-A\|}{\frac{1}{\|A^{-1}\|} - \|B-A\|}
+            \|B^{-1}-A^{-1}\| \le \|B^{-1}\| \cdot \|A - B\| \cdot \|A^{-1}\| \le \frac{\|A^{-1}\| \cdot \|B-A\|}{\frac{1}{\|A^{-1}\|} - \|B-A\|}
         \]
     \end{proof}
 
     \begin{remark}\leavevmode
         \begin{enumerate}
-            \item Множество операторов открыто
+            \item Множество обратимых операторов открыто
             \item Отображение $A \mapsto A^{-1}$ непрерывно
         \end{enumerate}
     \end{remark}
     
     \section*{Дифференцирование обратной функции}
 
-    $D \subset \R^n \quad f : D \rightarrow \R^n \quad x \in \Int D \quad \exists A \in B(\R^n. \R)$
+    $D \subset \R^n \quad f : D \rightarrow \R^n \quad x \in \Int D \quad \exists A \in B(\R^n, \R^n)$
     
     \begin{definition}
         Если $f(x + h) = f(x) + Ah + o(\|h\|), \quad h \rightarrow 0$, тогда говорят $A$ -- производная $f$ в точке $x$.
@@ -218,14 +227,14 @@
 
     Пусть теперь есть функция на открытом множестве:
 
-    $D$ открыто $\quad f \in C'(D, \R^n) \quad x _0 \in D \ f'(D_0)$ обратима
+    $D$ открыто $\quad f \in C'(D, \R^n) \quad x _0 \in D \ f'(x_0)$ обратима
 
     \begin{illustration}\leavevmode
         \begin{enumerate}
             \item $f(x, y) = \begin{pmatrix}e^x \cos y \\ e^x \sin y \end{pmatrix}$
             \par $f : \R^2 \rightarrow \R^2$
             \[
-                f'(x, y) = \begin{pmatrix} e^x\cos y - e^x\sin y \\ e^x\sin y + e^x\cos y \end{pmatrix}    
+                f'(x, y) = \begin{pmatrix} e^x\cos y & - e^x\sin y \\ e^x\sin y & e^x\cos y \end{pmatrix}    
             \]
             \item $n = 1 \quad f \in C^1(D, \R)$
             \par $f'(x_0) \not= 0$
@@ -238,11 +247,11 @@
 
     \begin{theorem}
         $D \subset \R^n$ открыто, $f \in C^1(D, \R^n)$
-        \par $x_0 \in D, \ f^{-1}(x_0)$ -- обратимая матрица
+        \par $x_0 \in D, \ f'(x_0)$ -- обратимая матрица
         \par Тогда $\exists$ окрестность $x_0, \> U \subset D$
         \par $V := f(U)$ открыто и $f\big|_U$ -- биекция между $U$ и $V$, $f^{-1} \in C^1(V, U)$
         \[
-            (f^{-1})'(f(x_0)) = (f'(x_0))^{-1}, \ \forall x \in U \quad f'(x_0) \in I    
+            (f^{-1})'(f(x)) = (f'(x))^{-1}, \ \forall x \in U %\quad f'(x_0) \in I    
         \]
     \end{theorem}
 
@@ -251,49 +260,56 @@
         \begin{enumerate}
             \item Пусть $f'(x_0) = I$. При $x$, близких к $x_0$, $f(x) \not= f(x_0)$
                 \[
-                    f'(x) = f(x_0) + (x-x_0) o(\|x-x_0\|)    
+                    f(x) = f(x_0) + (x-x_0) + o(\|x-x_0\|)    
                 \]
                 \[
-                    \frac{\|f(x)-f(x_0)\|}{x-x_0} = \frac{\|x-x_0\|}{\|x-x_0\|} + o(1), \ x \rightarrow x_0  
+                    \frac{\|f(x)-f(x_0)\|}{\| x-x_0 \|} = \frac{\|x-x_0\|}{\|x-x_0\|} + o(1), \ x \rightarrow x_0  
                 \]
                 $\exists$ окрестность, в которой $\|o(1)\| < \frac12 \Rightarrow f(x)-f(x_0) \not= 0$
             \item $f \in C^1(D, \R^n) \Rightarrow f'(x) \xrightarrow[x \rightarrow x_0]{} I$
-                \par $\exists r > 0 \ x_0 : \|f'(x) - I\| < \frac12$ для $\forall x \in B_r(x_0)$
+                \par $\exists r > 0, \ x_0 : \|f'(x) - I\| < \frac12$ для $\forall x \in B_r(x_0)$
                 \par $K = B_{\frac{r}{2}}[x_0] \subset B_r(x_0)$
             \item $g(x) = f(x) - x$
-                \par $g'(x) - f'(x) - I \quad \|g'(x)\| < \frac12, \ x \in K$
+                \par $g'(x) = f'(x) - I \quad \|g'(x)\| < \frac12, \ x \in K$
                 \[
                     \|g(x_1) - g(x_2)\| \le \frac12 \|x_1-x_2\| \quad \text{(т. Лагранжа)}
                 \]
                 \[
-                    \|f(x_1) - f(x_2) - (x_1 - x_2)\| \le \frac12 \|x_1 - x_2\| \Rightarrow \|f(x_1) - f(x_2)\| \le \frac32 \|x_1 - x_2\| \quad \text{(нер-во треуг.)}   
+                    \|f(x_1) - f(x_2) - (x_1 - x_2)\| 
+                    \le \frac12 \|x_1 - x_2\| \Rightarrow 
                 \]
                 \[
-                    \|f(x_1) - f(x_2)\| \le C - \|x_1 - x_2\|    
+                    \frac12 \|x_1 - x_2\| \le \|f(x_1) - f(x_2)\| 
+                    \le \frac32 \|x_1 - x_2\| \quad \text{(нер-во треуг., из этого следует инъективность)}   
+                \]
+                \[
+                    0 \le \|f(x_1) - f(x_2)\| \le C \cdot \|x_1 - x_2\| - \text{из этого следует непрерывность} 
                 \]
                 $f$ -- биекция из $K$ в $f(K)$
                 \par $f^{-1}$ -- из $f(K)$ в $K$ непр.
-            \item $\delta(K)$ компактно
+            \item $\delta(K)$ компактно, поскольку это сфера, сфера замкнута, сферу можно вписать в куб, куб - компакт, сфера - его замкнутое подмножество, значит тоже компакт.
                 \[
-                    \|f(\cdot) - f(x_0)\|_{\ge 0} \in C(\delta(K), \R), \ x_0 \not\in \delta(K) 
+                    \|f(\cdot) - f(x_0)\|_{\ge 0} \in C(\delta(K), \R), \ x_0 \not\in \delta(K) \quad\text{(вместо точки подставляем x)}
                 \]
                 Если $\inf_{x \in \delta(K)} \|f(x) - f(x_0)\| = 0$, то $\exists x' \in \delta(K) : f(x') = f(x_0)$.
                 \par Это означало бы, что $x' = x_0 \in \delta(K)$ (т. к. $f\big|_K$ биекция)
-                \par Значит, $\inf_{x \in \delta(K)} \|f(x) - f(x_0)\| > 0. \ \exists d > 0 \ B_d(f(x_0) \cap f(\delta(K))) = \emptyset$
-            \item $V = B_{\frac{r}{2}}(f(x_0))$
+                \par Значит, $\inf_{x \in \delta(K)} \|f(x) - f(x_0)\| > 0. \ \exists d > 0 \ B_d(f(x_0)) \cap f(\delta(K)) = \varnothing$
+            \item $V = B_{\frac{d}{2}}(f(x_0))$
                 \par $x \in \delta(K), \ y \in V$
                 \[
                     \|f(x) - y\| = \|\underbrace{f(x) - f(x_0)}_{\|\cdot\| > d} - \underbrace{(y - f(x_0))}_{\|\cdot\| < \frac{d}{2}}\| > d - \frac{d}{2} = \frac{d}{2}
                 \]
-                $h_y(x) = \|f(x) - y\|^2 \in C^1(K, \R_+)$
+                $h_y(x) = \|f(x) - y\|^2 \in C^1(K, \R_+)$ 
+                \par $h_y$ достигает минимума - $x_y$
                 \par $x \in \delta(K) \quad h_y(x) > \frac{d^2}{4}$
-                \par $x = x_0 \quad h_y(x) = \|f(x_0)-y\|^2 < \frac{d^2}{4}$
+                \par $x = x_0 \quad h_y(x_0) = \|f(x_0)-y\|^2 < \frac{d^2}{4}$
                 \par $\Rightarrow x_y \not\in \delta(K), \ x_y \in \Int K$
-                \par $h_y'(x_y) = (f(x) - y, f(x) - y)'_{\big|_{x=x_y}} = 2 (f(x) - y)^T \cdot f'(x)\big|_{x=x_y} = 0$
+                \par Производная скалярного произведения:
+                \par $h_y'(x_y) = (f(x) - y, f(x) - y)'_{\big|_{x=x_y}} = 2 (f(x) - y)^T \cdot f'(x)\big|_{x=x_y} = 0$ 
                 \par $V \subset f(K) \Rightarrow f(x_y) = y \Rightarrow y \in f(K)$
             \item $x \in U$
                 \[
-                    \underbrace{\underbrace{f(x + h)}_{y+k} - \underbrace{f(h)}_y}_k = f'(x)h + \phi(x, h) \quad \frac{\|\phi(x, h)\|}{\|h\|} \xrightarrow[\|h\| \rightarrow 0]{} x
+                    \underbrace{\underbrace{f(x + h)}_{y+k} - \underbrace{f(h)}_y}_k = f'(x)h + \phi(x, h) \quad \frac{\|\phi(x, h)\|}{\|h\|} \xrightarrow[\|h\| \rightarrow 0]{} 0
                 \]
                 \[
                     \rotatebox[]{90}{\text{\scriptsize В силу биекции}} \begin{cases}
@@ -318,7 +334,7 @@
                     \frac12\underbrace{\|x_1 - x_2\|}_{h} \le \underbrace{\|f(x_1) - f(x_2)\|}_{k} \le \frac32\underbrace{\|x_1 - x_2\|}_{h}   
                 \]
                 \[
-                    ^{(*)} \le \|(f'(x))^{-1}\| \cdot \underbrace{\frac{\|\phi(f^{-1}(y), f^{-1}(y + k) - f^{-1}(y))\|}{\|f^{-1}(y + k) - f^{-1}(y)\|}}_{\xrightarrow[n \rightarrow 0 \newline (k \rightarrow 0)]{} 0} \cdot \frac{\|f^{-1}(y+k) - f^{-1}(y)\|}{\|k\|}
+                    ^{(*)} \le \|(f'(x))^{-1}\| \cdot \underbrace{\frac{\|\phi(f^{-1}(y), f^{-1}(y + k) - f^{-1}(y))\|}{\|f^{-1}(y + k) - f^{-1}(y)\|}}_{\xrightarrow[h \rightarrow 0 \newline (k \rightarrow 0)]{} 0} \cdot \frac{\|f^{-1}(y+k) - f^{-1}(y)\|}{\|k\|}
                 \]
                 \[
                     \Rightarrow \exists (f^{-1})'(f(x)) = (f'(x))^{-1}    
@@ -328,16 +344,16 @@
                 \par $f' : f^{-1}(y) \mapsto f'(f^{-1}(y)) \quad f' \in C(D, \R^n)$
                 \par $A \mapsto A^{-1} \quad$ непрерывное отображение
                 \par $\quad \Rightarrow f^{-1} \in C^1(V, U)$
-            \item Общий случай $\quad f^{-1}(x_0) = A, \ \det A \not= 0$
+            \item Общий случай $\quad f'(x_0) = A, \ \det A \not= 0$
                 \par $\tilde f(x) := A^{-1}f(x)$
                 \par $\tilde f'(x) = A^{-1}f'(x)$
                 \par $\tilde f'(x_0) = A^{-1}A = I$
                 \par $\exists U, \tilde V, \tilde f\big|_U$ -- биекция, $\tilde f^{-1} \in C^1(\tilde V, U)$
-                \par $\quad (\tilde f^{-1})'(U) = $
+                \par $\quad (\tilde f^{-1})' (\tilde V) = (\tilde f')^{-1}(U)$
                 \par $f(x) = A \tilde f(x) \quad f\big|_U$ биекция м. $U$ и $A \tilde V := V$
                 \par $y = A \tilde f(x) \quad x = \tilde f^{-1}(A^{-1} y) \Rightarrow f^{-1} \in C^1(V, U)$
                 \par $A^{-1}y = \tilde f(x) \quad f^{-1} = \tilde f^{-1} \cdot A^{-1}$
-                \pagebreak
+                
                 \[
                     (f^{-1})'(f(x)) = (\tilde f^{-1})(\overbrace{A^{-1}f(x)}^{=\tilde f(x)}) A^{-1} = (\tilde f'(x))^{-1} A^{-1} =
                 \]

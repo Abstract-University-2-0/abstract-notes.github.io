@@ -30,6 +30,20 @@ function parse_date(date) {
   return { day, month: months[month - 1] };
 };
 
+/** уже не активной кнопке снимаем стили, новой накладываем */
+function changeButtonColors(prevButton, selButton) {
+  const red = "#a84646"
+  const beige = "#fae5ca"
+  prevButton.className = "index_button"
+  prevButton.style = "none";
+
+  selButton.target.className = "index_button selected";
+  selButton.target.style.textDecoration = "underline";
+  selButton.target.style.backgroundColor = "black";
+  selButton.target.style.color = "white"
+}
+
+/** добавляем кнопки для выбора конспекта */
 async function fetchNotes() {
   console.group('fetch notes');
 
@@ -46,6 +60,12 @@ async function fetchNotes() {
     button.filename = file.name
     button.title = `лекция ${day} ${month}`
     button.onclick = (e) => {
+      prev = document.querySelector(".selected");
+      if (!prev) {
+        prev = document.querySelector(".index_button")
+      }
+      changeButtonColors(prev, e)
+
       frame.src = `https://docs.google.com/viewer?url=${ghUrlPrefix}${e.target.id.substring(1)}/calculus.pdf&embedded=true`;
       console.log('pfd updated');
     };
@@ -53,5 +73,7 @@ async function fetchNotes() {
   }
   console.groupEnd('fetch notes');
 }
+
+document.getElementById("index_search").style.display = "none";
 
 fetchNotes();

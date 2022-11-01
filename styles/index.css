@@ -88,6 +88,16 @@ a:hover {
     margin-top: 25px;
 }
 
+#index_search {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 25px;
+    width: min(max(35%, 500px), calc(100vw - 20% - 40px));
+
+    background-color: white;
+    border: 5px solid #a84646;
+}
+
 .index_button {
     font-size: max(3vh, 1vw);
     font-family: monospace;
