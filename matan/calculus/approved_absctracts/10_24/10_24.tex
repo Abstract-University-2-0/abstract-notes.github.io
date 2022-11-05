@@ -6,7 +6,7 @@
 
 
 \renewcommand{\baselinestretch}{1.3} 
-\setcounter{lemma}{14}
+\setcounter{lemma}{19}
 
 \begin{document}
     Додокажем теорему
@@ -41,7 +41,7 @@
 
         $$\int_G (f\circ g_{k+1} | \det g_{k+1}'|) \circ h |\det h'|$$
 
-        $$= \int_G \underbrace{f\circ g_{k+1}\circ h}_{f \circ g} \cdot | (\det g_{k+1}') \cdot h\det h'|$$
+        $$= \int_G \underbrace{f\circ g_{k+1}\circ h}_{f \circ g} \cdot | (\det g_{k+1}' \circ h |\det h')$$
 
         $$=\int_G f \circ g |\det g'|$$
 
@@ -56,8 +56,8 @@
 
         По лемме 15 $g|\underset{B_{\varepsilon_x}(x) }{}$ раслкадывается в композицию простейших диффеоморфизмов
         
-        $$K \subset \bigcup_{x\in K} B_{B_{\varepsilon_x/2}(x) }, 
-        K \subset \bigcup^N_{i=1} B_{B_{\varepsilon_{x_i}/2}(x_i) }$$
+        $$K \subset \bigcup_{x\in K} {B_{\varepsilon_x/2}(x) }, 
+        K \subset \bigcup^N_{i=1} {B_{\varepsilon_{x_i}/2}(x_i) }$$
         т.к. $K$ - компакт.
 
         $\displaystyle\delta := \min_{i=1,\dotsc,N} \frac{\varepsilon_{x_i}}{2}$
@@ -101,7 +101,7 @@
 
         $\text{supp}(f\circ g) = K \subset \bigcup_{\pi\in P_1}\pi$
 
-        $$(*) = \int_{g(\bigcup_{\pi\in P_1}\Pi)}f = \int_{\Pi_x}f\circ \chi_{g(\bigcup_{\pi \in P_1}\pi)} = 
+        $$(*) = \int_{g(\bigcup_{\pi\in P_1}\Pi)}f = \int_{\Pi_x}f\cdot \chi_{g(\bigcup_{\pi \in P_1}\pi)} = 
         \int_{\Pi_x}f\cdot \chi_{g(G)} = \int_{g(G)}f$$
         
     \end{proof}
@@ -249,9 +249,11 @@
         $\int_{\widetilde{E_l}\cap E_k} \le \int_{E_k}f \le \lim_{k\to\infty} \int_{E_k} f$
         $\qquad \{\widetilde{E_l}\cap E_k\}^\infty_{l=1}$ - исчерпание $E_k$
 
-        $\qquad \{\widetilde{E_l}\cap E_k\}^\infty_{k=1}$ - исчерпание $E_l$
+        $\qquad \{\widetilde{E_l}\cap E_k\}^\infty_{k=1}$ - исчерпание $\widetilde E_l$
 
         $\overset{\text{лемма}}{\implies} \lim_{l \to \infty} \int_{\widetilde{E_l} \cap E_k}f = \int_{E_k} f \le \lim_{l\to\infty} \int_{\widetilde{E_l}} f$ % fuck propustil implies \lim k \int E_k f \le \lim l \int E_l f
+        
+        $\implies \lim_{k\to\infty} \int_{E_k} f \le \lim_{l\to\infty} \int_{\widetilde E_l} f$
 
         $\lim_{k\to\infty} \int_{\widetilde{E_l}\cap E_k} f= \int_{\widetilde{E_l}} f \le \lim_{k\to\infty} \int_{E_k}f$
 
