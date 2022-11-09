@@ -3,6 +3,11 @@
     src: url("./Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: JbMonoBold;
+    src: url("./Fonts/jb_mono/JetBrainsMono-Bold.ttf") format("truetype");
+}
+
 html {
     padding: 0;
     margin: 0;
@@ -23,6 +28,11 @@ button {
     text-decoration: none;
     border: none;
     background: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 button:hover {
@@ -53,11 +63,11 @@ a:hover {
 .big_header {
     padding: 20px;
     font-size: 50px;
-    padding-left: 10%;
+    padding-left: calc(5vw + 0.6em);
 }
 
 .back {
-    margin-left: 10%;
+    margin-left: calc(5vw + 1em);
     font-size: 32px;
 }
 
@@ -69,16 +79,18 @@ a:hover {
 #index_list {
     /* padding-left: 12%; */
     display: inline-block;
-    width: max(calc(20% - 40px - 12%), 5em);  /*лист 40 пикселей ест*/
-    padding-left: 40px;
+    width: 5vw; 
+    /* padding-left: 40px; */
     vertical-align: top;
+    padding: 0;
     padding-top: 20px;
-    padding-left: 3.5%;
+    padding-left: 0;
+    padding-left: 1em; 
 }
 
 #index_pdf {
     display: inline-block;
-    width: min(max(50%, 860px), calc(100vw - 20% - 40px));
+    width: min(max(50%, 860px), calc(100vw - 20%));
     background-color: #acacac;
     height: 92vh;
     border: 5px solid #a84646;
@@ -99,8 +111,8 @@ a:hover {
 }
 
 .index_button {
-    font-size: max(3vh, 1vw);
-    font-family: monospace;
+    font-size: 1em/*max(3vh, 1vw)*/;
+    font-family: "JbMonoBold", monospace;
     color:#a84646;
     background-color: #fae5ca;
     border: 2px dashed black;
