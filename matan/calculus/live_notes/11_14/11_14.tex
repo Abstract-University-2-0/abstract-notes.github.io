@@ -1,0 +1,347 @@
+\input{../../../preamble.tex}
+\parindent 5px
+
+\usepackage{amsfonts, amssymb, amsmath, mathtools, amsthm}  %% for math symbs
+\usepackage{mathrsfs}
+
+
+\renewcommand{\baselinestretch}{1.3} 
+% \setcounter{lemma}{14}
+
+\begin{document}
+  14.11.22
+
+  \section*{Ряды и интрегалы, зависящие от параметра}
+
+  Вспомним равномерную сходимость, непрерывность и т.д.:
+
+  $X_0, X $ -- метрические пространства,
+
+  $E \subset X_0, f:E\to X$
+
+  $\{ f \text{ непр. в точке }x \}_{x \in E}$
+
+  Непрерывность на $E$: 
+  
+  $\forall \varepsilon > 0, \forall x \in E \ \exists \delta>0: \forall x' \in E: d_0(x, x') < \delta$ выполняется $d\big(f(x), f'(x)\big) < \varepsilon$
+
+  Равномерная непрерывность:
+
+  $\forall \varepsilon > 0, \exists \delta > 0 \ \forall x, x' \in E: d_0(x, x') < \delta$ выполняется $d\big(f(x), f'(x)\big) < \varepsilon$
+
+  $\{ a_n(p)\}^\infty_{n=1}, p \in P$
+
+  $\{a_n(p) \rightarrow_{h \to \infty} a(p)\}_{p\in P}$
+
+  Сходимость:
+
+  $$\forall \varepsilon > 0 \ \forall p \in P \ \exists N: \forall n > N \ d\big(a_n(p), a(p)\big) < \varepsilon$$
+
+  Равномерная сходимость:
+
+  $$\forall \varepsilon > 0 \ \exists N: \forall p \in P, \forall n > N \ d\big(a_n(p), a(p)\big) < \varepsilon$$
+
+  \begin{illustration}
+    
+    $a_n(p) = \frac{np}{1 + (np)^2}, P = [0, 1]$
+  
+    $\forall p \in P \ a_n(p) \underset{n\to \infty}{\longrightarrow} 0$
+  
+    $\varepsilon = 1/2, \forall N \ \exists p, n; np=1:\ \frac{np}{1+(np)^2} = 1/2$
+  \end{illustration}
+
+  \begin{theorem} % 1
+    (о двойном пределе)
+
+    $X$ - полное метрическое пространство,
+    $\{a_{np}\}_{n,p \in \N}$ - двойная последовательность в $X$.
+
+    $$\forall p \in \N \ \exists \lim_{n\to\infty}a_{np} = u_p$$
+
+    $$\forall n \in \N \ \exists \lim_{p\to\infty}a_{np} = v_n$$
+
+    Если один из этих пределов достигается равномерно, то 
+
+    $$ \exists\lim_{p\to\infty} u_p, \exists \lim_{n\to\infty}v_n$$
+
+    и они равны.
+  \end{theorem}
+  \begin{proof}
+    Пусть первый предел достигается равномерно.
+
+    $a_{np}\underset{n \to \infty}{\overset{p\in\N}{\rightrightarrows}} u_p$
+
+    $\forall \varepsilon > 0 \ \exists N_1: \forall n > N_1, \forall p: \ d(a_{np}, u_p) < \varepsilon  / 3$
+
+    $n_0 > N_1$, $a_{n_0p} \underset{p\to\infty}{\longrightarrow} v_n$ критерий коши для последовательности:
+
+    для $\varepsilon\ \exists N_2: \forall p, q > N_2: \ d(a_{n_0p}, a_{n_0q}) < \varepsilon / 3$
+
+    $d(u_p, u_q) \le \underbrace{d(u_p, a_{np})}_{< \varepsilon/3} + \underbrace{d(a_{n_0p}, a_{n_0q})}_{<\varepsilon/3} + \underbrace{d(a_{n_0q}, u_q)}_{<\varepsilon/3}$ по н-ву треугольника.
+
+    Это меньше $\varepsilon \ \forall \varepsilon \implies u_p$ сходится, $\lim_{p\to\infty} u_p = w$
+
+    $d(a_{np}, u_p) < \varepsilon / 3 \underset{p\to\infty}{\implies} d(v_n, w) \le \varepsilon / 3 < \varepsilon$,
+
+    значит $v_n \underset{{n\to\infty}}{\longrightarrow} w$
+  \end{proof}
+
+  \begin{remark}
+    Формулировка теоремы в двойном пределе:
+    
+    $$\lim_{n\to\infty}\lim_{p\to\infty} a_{np} = \lim_{p\to\infty}\lim_{n\to\infty} a_{np}$$
+  
+    (можно переставить пределы, если одна из последовательностей сходится равномерно)
+  \end{remark}
+
+  \par $ $
+
+  Непр-ть расстояния: $x_n \to x, y_n \to y \implies d(x_n, y_n) \to d(x, y)$ (по н-ву треугольника)
+
+  \begin{illustration}
+    $$a_{np} = \frac{n}{1 + n + p},\quad a_{np} \underset{n \to \infty}{\longrightarrow} 1, \quad a_{np} \underset{p\to\infty}{\longrightarrow} 0$$
+
+    $$\lim_{n\to\infty}\lim_{p\to\infty} a_{np} = 0, \lim_{p\to\infty}\lim_{n\to\infty}a_{np} = 1$$
+  \end{illustration}
+
+  \begin{corollary} % 1
+    $X$ - полное метрическое пространство,
+    $$\lim_{p\to\infty} \sum^\infty_{n=1} a_{np} = \sum^\infty_{n=1} \lim_{p\to\infty}a_{np}$$
+  \end{corollary}
+
+  \begin{corollary}
+    $$\lim_{n\to\infty}\lim_{x\to a}f_n(x) = \lim_{x\to a}\lim_{n\to\infty} f_n(x)$$
+  \end{corollary}
+
+  {\noindent \textbf{Следствие 2'.}}
+
+  $$\sum_{n=1}^\infty \lim_{x\to a}f_n(x) = \lim_{x \to a}\sum^\infty_{n=1} f_n(x)$$
+
+  \begin{corollary} % 3
+    $f_n(x) \rightrightarrows^{x\in E}_{n \to \infty} \varphi(x), \forall n \ f_n \in C(E) \implies \varphi \in C(E)$
+  \end{corollary}
+
+  {\noindent \textbf{Следствие 3'.}}
+
+  $$\sum^{\infty}_{n=1}f_n(x) = \varphi(x)$$
+
+  \textit{сходится равномерно по $x \in E, \forall n \ f_n \in C(E) \implies \varphi \in C(E)$}
+
+  \begin{corollary}
+    $$\lim_{y\to b}\lim_{x \to a} f(x,y) = \lim_{x \to a}\lim_{y \to b} f(x,y)$$ (что-то равномерно должно сходиться)
+  \end{corollary}
+
+  \begin{corollary}  % 5
+    $f(x,y) \rightrightarrows_{y\to b}^{x\in E} \varphi(x),\quad f(\cdot, y) \in C(E), \forall y \implies \varphi \in C(E)$
+  \end{corollary}
+
+  \begin{definition}
+    $X_0,X$ - м.п., $E\subset X_0, f_p: E \to X, p \in P$
+
+    $\{f_p(x)\}_{p\in P}$ равностепенно непрерывно, если 
+
+    $\forall \varepsilon \ \exists \delta: \forall x, x' \in E: d(x, x') < \delta, \forall p \in P \ d\big(f_p(x), f_p'(x)\big) < \varepsilon$
+  \end{definition}
+
+  {\noindent \textbf{Следствие 3''.}}
+  \textit{
+    $\sum^n_{k=1}f_k \in C(E), \forall n$ равностепенно по $n$, $\forall x \ \sum^\infty_{n=1} f_n(x) = \varphi(x)$ сходится, тогда $\varphi$ непр.
+  }
+
+  \subsection*{Суммирование двойного ряда}
+
+  $$\sum^\infty_{n=1}\sum^\infty_{k=1}a_{nk} = \sum^\infty_{k=1}\sum^\infty_{n=1}a_{nk}$$
+
+  когда такое возможно???
+  $a_{nk} \in \R_{\ge 0}$ 
+
+  $\varphi:\N \to \N \quad \sum^\infty_{n=1} a_n = \sum^\infty_{n=1}a_{\varphi(n)}$
+
+  \begin{definition}
+    
+    $A$ - счётное множество индексов: $\exists$ биекция $\varphi: \N \to A$
+  
+    $\sum_{\alpha \in A} a_\alpha = \sum^\infty_{n=1}a_{\varphi(n)}$
+  
+    $\sum_{(n,k) \in \N^2}a_{nk}$
+  
+    корректность. $\psi: \N \to A$ др $\sum^\infty_{n=1} a_{\varphi(n)} = \sum^\infty_{k=1}a_{\psi(k)}$ (теорема об изменении порядка суммирвоания)
+  \end{definition}
+  соблазн сказать:
+  $$\sum^\infty_{n=1}\sum^\infty_{k=1}a_{nk} = \sum^\infty_{k=1}\sum^\infty_{n=1}a_{nk} = \sum_{(n,k)\in \N^2} a_{nk}$$
+
+  \begin{theorem}  % 2
+    $a_{nk} \ge 0, \forall n,k \in \N: $
+    $$\sum^\infty_{n=1}\sum^\infty_{k=1}a_{nk} = \sum^\infty_{k=1}\sum^\infty_{n=1}a_{nk}$$
+  \end{theorem}
+  \begin{proof}
+    $$\sum_{n=1}^N\sum_{k=1}^\infty a_{nk} \le \sum_{(n, k) \in \N^2} a_{nk}$$
+
+    $$\sum_{n=1}^N\sum_{k=1}^{K_n} a_{nk} \le \sum_{(n,k) \in \N^2} a_{nk} \implies \underbrace{\lim_{k_1\to\infty}\lim_{k_2\to\infty}\dotsc\lim_{k_N\to\infty} \sum^N_{n=1}\sum^{K_n}_{k=1} a_{nk}}_{ = \sum^N_{n=1}\sum^\infty_{k=1}a_{nk}} \le \sum_{(n,k) \in \N^2} a_{nk}$$
+
+    $$\implies \sum^\infty_{n=1}\sum^\infty_{k=1}a_{nk} \le \sum_{(n,k) \in \N^2}a_{nk}$$
+
+    1. $\sum_{(n,k)\in\N^2}a_{nk} = \sum_{l=1}^\infty a_{\varphi(l)} < \infty$
+
+    $\forall \varepsilon \ \exists L:\forall l > L : \sum^l_{j=1}a_{\varphi(j)} > \sum_{(n,k) \in \N^2}a_{nk} - \varepsilon$ (обозначим правую ч за $M$)
+
+    $K = \{\varphi(l)\mid l=1,\dotsc, L\} \quad \exists N: K = \bigcup^N_{n=1} K_n$
+
+    $\widetilde K_n = \{n\}\times K_n$, $K_n = \{k \mid (n,k) \in K\} = \pi_y \widetilde K_n$
+
+    $$\sum_{(n,k)\in\N^2}a_{nk} - \varepsilon < \sum^{L+1}_{j=1}a_{\varphi(j)} = \sum^N_{n=1}\sum_{k \in K_n} a_{nk} \le \sum^N_{n=1}\sum^\infty_{k=1} a_{nk}$$
+
+    $$\forall \varepsilon \ \exists N : \sum^N_{n=1}\sum^\infty_{k=1} a_{nk} \ge \sum_{(n,k) \in \N^2}a_{nk} - \varepsilon \implies \sum^\infty_{n=1}\sum^\infty_{k=1} a_{nk} \ge \sum_{(n,k) \in \N^2} a_{nk}$$
+
+    2. $\sum_{(n,k) \in\N^2} a_{nk} = \infty$
+
+    (вместо $\varepsilon$ и $\sum_{(n,k)\in\N^2}a_{nk}$ ставим $M$, а последний переход равен бесконечности)
+
+    Аналогично $\sum^\infty_{k=1}\sum^\infty_{n=1}a_{nk} = \sum_{(n,k)\in\N^2} a_{nk}$
+  \end{proof}
+
+  \begin{theorem}
+    $\{a_{nk}\}_{n,k \in\N}$ - двойная последовательность в $\R$,
+    $\sum_{n,k \in \N} |a_{nk}| < \infty$.
+
+    Тогда сходятся и равны двойные суммы 
+
+    $\sum^\infty_{n=1}\sum_{k=1}^\infty a_{nk} = \sum^\infty_{k=1}\sum^\infty_{n=1} a_{nk}$
+  \end{theorem}
+  \begin{proof}
+    $\forall n \in \N \ \sum^\infty_{k=1} | a_{nk} | \le \sum_{n,k \in \N} |a_{nk}| $
+
+    $\forall n \in \N \quad \sum^\infty_{k=1} a_{nk}$ сходится абсолютно
+
+    $\forall \varepsilon \ \exists N: \forall m > n > N \ \sum^m_{i=n}\big| \sum^\infty_{j=1} a_{ij}\big| \le \sum^m_{i=n}\sum^\infty_{j=1} | a_{ij}| < \varepsilon$
+    
+    $\overset{\text{коши}}{\implies} \sum^\infty_{i=1}\sum^\infty_{j=1} a_{ij}$ сходится абсолютно
+  
+    $\{\varphi_{n^2}\}^\infty_{n=1}$ - подпоследовательность
+
+    $\sum^n_{i=1}\sum^n_{j=1}|a_{ij}| \underset{n\to\infty}{\longrightarrow} \sum_{(i,j) \in \N^2} |a_{ij}|$
+
+    $\forall \varepsilon \ \exists N: \forall n > N \ \sum^\infty_{l=n^2+1}|a_{\varphi(l)}| < \varepsilon$
+
+    $ = \sum^n_{i=1}\sum^n_{j=n+1} |a_{ij}| + \sum_{i=n+1}^\infty\sum^\infty_{j=1} |a_{ij}| < \varepsilon$
+
+    $\Big|\sum^n_{i=1}\sum^\infty_{j=1} a_{ij} - \sum^n_{i=1}\sum^n_{j=1}a_{ij}\Big| \le \Big| \sum^n_{i=1}\sum^\infty_{j=n+1}a_{ij}\Big|
+    \le \sum^n_{i=1}\sum^\infty_{j=n+1} |a_{ij}|$
+
+    $\Big| \sum^\infty_{i=1}\sum^\infty_{j=1} a_{ij} - \sum^n_{i=1}\sum^\infty_{j=1} a_{ij}\Big| = \Big| \sum^\infty_{i=n+1}\sum^\infty_{j=1}a_{ij}\Big| \le \sum_{i=n+1}^\infty\sum_{j=1}^\infty | a_{ij}|$
+
+    сложим две оценки:
+
+    $\Big|\sum^n_{i=1}\sum^n_{j=1}a_{ij} - \sum^\infty_{i=1}\sum^\infty_{j=1} a_{ij} \Big| < \varepsilon$
+
+    Аналогично $\Big|\sum_{j=1}^n\sum_{i=1}^n a_{ij}- \sum^\infty_{j=1}\sum^\infty_{i=1} a_{ij} \Big|< \varepsilon$
+
+    $\implies \forall \varepsilon \ \exists N: \sum^\infty_{i=1}\sum^\infty_{j=1}a_{ij} = \sum^\infty_{j=1}\sum^\infty_{i=1} a_{ij}$
+  \end{proof}
+
+  \subsection*{Интегрирование}
+
+  \begin{theorem} % 4
+    $f_n: [a,b] \to \R$, $\forall n \ f_n \in C([a,b])$
+
+    $\forall x \in [a,b] \ \exists \lim_{n\to\infty} f_n(x) = \varphi(x)$, равномерно по $x\in [a,b]$
+
+    Тогда $\int^b_a f_n(x)dx \underset{n\to\infty}{\longrightarrow} \int^b_a \varphi(x)dx$
+  \end{theorem}  
+  \begin{remark}
+    $\lim_{n\to\infty}\int^b_a f_n(x)dx = \int^b_a\lim_{n\to\infty}f_n(x)dx$, если $f$ равномерно сх.
+  \end{remark}
+  \begin{proof}
+    $\varphi \in C([a,b])$ по следствию (3?)
+
+    $\forall \varepsilon \exists N: \forall n > N, x \in [a,b] \ | f_n(x) - \varphi(x) | < \frac{\varepsilon}{|b-a|}$
+
+    Интегрируем:
+
+    $\Big|\int^b_a f_n(x) dx - \int^b_a\varphi(x)dx\Big| \le \int^b_a |f_n(x) - \varphi(x) dx |< \varepsilon$
+  \end{proof}
+
+  
+  \begin{corollary} % 6
+    $\sum^\infty_{n=1} \int^b_a f_n(x)dx = \int^b_a \sum^\infty_{n=1} f_n(x)dx$, если ряд справа сходится равномерно
+  \end{corollary}
+
+  \begin{corollary}
+    $\lim_{y\to c} \int^b_a f(x,y)dx = \int^b_a\lim_{y\to c} f(x,y)dx$, если предел ф равномерно по экс 
+  \end{corollary}
+
+  \begin{corollary}
+    $K \subset \R^n$ компактно, $f \in C \big([a,b] \times K\big) \quad \int^b_a f(x,y)dx = \varphi(y): K\to\R$
+
+    Тогда $\varphi \in C(K)$
+  \end{corollary}
+
+  \subsection*{Дифференцирование}
+
+  \begin{theorem}% 5
+    $f_n(a,b) \to \R, \forall n \ f_n \in C^1(a,b), \forall x \in (a,b) \ \exists \lim_{n\to\infty}f_n(x) = \varphi(x)$
+
+    $\forall x \in (a,b) \ \exists \lim_{n\to\infty} f_n'(x) = \psi(x)$, достигается равномерно.
+
+    Тогда $\varphi \in C^1(a,b)$ и $\varphi' = \psi$.
+
+    $\lim_{n\to\infty} \frac{df_n}{dx}(x) = \frac{d}{dx}\big(\lim_{n\to\infty}f_n(x)\big)$, производная сх равн.
+  \end{theorem}
+  \begin{proof}
+    $x_0 \in (a,b) \quad f_n(x) = f_n(x_0) + \int^x_{x_0}f_n'(t)dt$
+
+    $\longrightarrow \varphi(x) = \varphi(x_0) + \int^x_{x_0} \psi(t)dt \implies \varphi' = \psi$
+  \end{proof}
+
+  \begin{corollary} % 9
+    $\sum_{n=1}^\infty\frac{df_n}{dx}(x) = \frac{d}{dx}\big(\sum^\infty_{n=1}f_n(x)\big)$, ряд проивзводных должен сх равн.
+  \end{corollary}
+
+  \begin{corollary}
+    $\lim_{y\to c} \frac{df}{dx}(x,y) = \frac{d}{dx}\big(\lim_{y\to c}f(x,y) \big)$, если слева равн сх
+  \end{corollary}
+
+  \begin{theorem}
+    (Дифф интеграла по параметру)
+
+    $f: [a,b] \times (c,d) \to \R, f \in C\big([a,b]\times (c,d)\big)$,
+    
+    $\forall x, y \in [a,b]\times(c,d) \quad \exists \frac{\partial f}{\partial y}(x,y) = \varphi(x,y), \ \varphi(x,y) \in C\big([a,b]\times(c,d)\big)$
+
+    Тогда $$\exists \frac{d}{dy}\int^b_a f(x,y)dx = \int^b_a\varphi(x,y)dy$$
+
+    ($\frac{d}{dy}\int^b_af(x,y)dx = \int^b_a\frac{\partial f}{\partial y}(x,y)dx$)
+  \end{theorem}
+\begin{proof}
+  $$\frac{1}{n} \Big(\int^b_a f(x,y+h) - f(x,y)\Big)dx = \int^b_a \frac{f(x,y+h) - f(x,y)}{h}dx$$
+
+  Правая часть стремится к $\frac{\partial f}{\partial y}(x,y), h\to 0$
+
+  Левая к $\frac{d}{dy}\int^b_a f(x,y)dx, h \to 0$
+
+  $g(h) = f(x,y+h) - f(x,y) - \frac{\partial f}{\partial y}(x,y)\cdot h$
+
+  $g(h) = g(h) - g(0) = g'(\xi)\cdot h, \xi \in [0,h]$ (т. Лагранжа)
+
+  $= \Big(\frac{\partial f}{\partial y}(x,y+\xi) - \frac{\partial f }{\partial y}(x,y)\Big)\cdot h, \xi (h)$
+
+  $\frac{f(x,y+h) - f(x,y)}{h} - \frac{\partial f}{\partial y}(x,y) = \frac{\partial f}{\partial y}\big(x, y+ \xi(h)\big) - \frac{\partial f}{\partial y}(x,y)$
+
+  $\frac{\partial f}{\partial y} \in C\big([a,b]\times (c,d)\big)$, возьмём аш такую, чтобы y-h, y+h лежал в (c,d)
+
+  $\frac{\partial f}{\partial y} \in C\big([a,b] \times [y - \delta, y+\delta]\big)$
+
+  $\implies \frac{\partial f}{\partial y}\big(x, y+\xi(h)\big) - \frac{\partial f}{\partial y}(x,y)\underset{h\to 0}{\rightrightarrows} 0$
+  
+  $\forall \varepsilon > 0 \ \exists \delta > 0: \forall \xi \in (-\delta, \delta), \forall x \in [a,b] \quad \Big| \frac{\partial f}{\partial y}(x,y+\xi) - \frac{\partial f}{\partial y}(x,y) \big| < \varepsilon$
+
+  $\implies \forall h \in (-\delta, \delta), \forall \xi(h) \in [0, h], \forall x \in [a,b]: \Big|\frac{f(x,y+h)}{h} \Big| = \Big| \frac{\partial f}{\partial y}(x,y + \xi(h)) - \frac{\partial f}{\partial y}(x,y)\Big| < \varepsilon$
+
+  $\implies \frac{f(x,y + h) - f(x,y)}{h} \rightrightarrows^{x\in[a,b]}_{h\to 0} \frac{\partial f}{\partial y}(x,y)$
+
+  $\int^b_a \frac{f(x,y+h) - f(x,y)}{h}dx \longrightarrow \int^b_a \frac{\partial f}{\partial y}(x,y)dx$
+
+
+\end{proof}
+
+  \end{document}

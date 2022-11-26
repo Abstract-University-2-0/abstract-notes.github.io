@@ -1,0 +1,222 @@
+\input{../../../preamble.tex}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+% beginwith добавить (начинается с 7 теоремы)
+
+\begin{document}
+    \title{Математический анализ}
+    \date{21 ноября 2022}
+    \maketitle{}
+
+    \pagebreak
+
+    \begin{theorem}
+        $f_n : [a, +\infty) \rightarrow \R$
+        \par $\forall n \in \N \quad f \in C([a, +\infty))$
+        \par $\forall x \in [a, + \infty) \ \exists \lim_{n \rightarrow \infty} f_n(x) =: \phi(x)$
+        \par $\forall R > a$ сходимость равномерна на $[a, R]$
+        \[
+            \forall n \ \exists \int_a^\infty f_n(x)dx \text{ и сходится равномерно по } n \in \N   
+        \]
+        \par Тогда 
+        \[
+            \exists \lim_{n \rightarrow a} \in_a^{+\infty} f_n(x)dx  = \int_{a} \phi(x)dx   
+        \]
+        \[
+            \lim_{n \rightarrow \infty} \int_a^{+\infty} f_n(x)dx = \int_a^{+\infty} \lim_{n \rightarrow \infty} f_n(x)dx   
+        \]
+    \end{theorem}
+
+    \begin{theorem}
+        $f : [a, + \infty) \times (c, d) \rightarrow \R, \ f \in C([a, + \infty) \times (c, d))$
+        \[
+            \forall x, \in [a, + \infty) \times (c, d) \ \exists \frac{\partial f}{\partial y}(x, y) = \phi(x, y), \phi \in C([a, + \infty) \times (c, d))
+        \]
+        \[
+            \forall y \in (c, d) \ \exists \int_a^{+\infty} f(x, y)dx, \ \exists \int_a^{+\infty} \phi(x, y) dx, \text{ сх. равномерно по } y \in (c, d)   
+        \]
+        \par Тогда $\exists$ и равны
+        \[
+            \frac{d}{dx} \int_a^{+\infty} f(x, y) dx = \int_a^{+\infty} \phi(x, y) dx    
+        \]
+        \[
+            \frac{d}{dx} \int_a^{+\infty} f(x, y)dx  = \int_a^{+\infty} \frac{\partial f}{\partial x} (x, y) dx  
+        \]
+    \end{theorem}
+
+    \begin{theorem}
+        $f : [a, + \infty) \times (c, d) \rightarrow \R, \ f \in C([a, + \infty) \times (c, d))$
+        \[
+            \int_a^{+\infty} f(x, y)dx \text{ сх. равномерно по } y \in [c, d]   
+        \]
+        \par Тогда $\exists$ и равны
+        \[
+            \int_c^d dy \int_a^{+\infty} f(x, y) dx = \int_a^{+\infty} dx \int_c^d f(x, y) dy 
+        \]
+    \end{theorem}
+
+    \subsection*{Внешняя алгебра}
+
+    $L$ -- линейное пространство, $\dim L = n$
+    \[
+        e_1, \dots, e_n \text{ -- базис в } L   
+    \]
+    \par $\Lambda^2 L$ -- формальные суммы $\sum_{i=1}^N \alpha_i a_i \wedge b_i, \ \alpha_i \in \R, \ a_i, b_i \in L$,
+    \par \quad профакторизованные по отношению эквивалентности, заданному правилом:
+    \[
+        (\alpha a_i + \beta b_1) \wedge a_2 = \alpha a_1 \wedge a_2 + \beta b_1 \wedge a_2   
+    \]
+    \[
+        a_1 \wedge a_2 = -a_2 \wedge a_1
+    \]
+    
+    \par $a = \sum_{i=1}^n a^i e_i, \ b = \sum_{i=1}^n b^i e_i$
+    \[
+        a \wedge b = \sum_{i, j = 1}^n a^i b^j e_i \wedge e_j  = \sum_{i, j \in \{1, \dots, n \}, i \not= j} a^ib^j e_i \wedge e_j =  
+    \]
+    \[
+        = \sum_{i, j \in \{1 \dots, n\}, i < j} (a^ib^j - b^i a^j) e_i \wedge e_j    
+    \]
+
+    \par $e_i \wedge e_j \ | \ 1 \le i < j_{\le n}$ -- базис $\Lambda^2 L$ \quad $\dim \Lambda^2 L = C_n^2$
+
+    \par $\Lambda^0 L = \R$
+    \par $\Lambda^1 L = L$
+    \par $\Lambda^p L$ -- формальные суммы $\sum \alpha a_1 \wedge a_2 \wedge \dots \wedge a_n$
+    \par \quad факторизованные по правилам
+    \[
+        (\alpha a_1 + \beta b_1)\wedge a_2 \wedge \dots \wedge a_p = \alpha a_1 \wedge a_2 \wedge \dots \wedge a_p + \beta b_1 \wedge a_2 \wedge \dots \wedge a_p    
+    \]
+
+    \par Базис $\Lambda^p L \quad e_{n_1} \wedge e_{n_2} \wedge \dots \wedge e_{n_p}$, где $1 \le n_1 < n_2 < \dots < n_p \le n$ 
+    \par $\dim \Lambda^p L = C_n^p$
+    \par Если $\pi$ -- перестановка $\{1, \dots, p\} \quad a_{\pi(1)} \wedge a_{\pi(2)} \wedge \dots \wedge a_{\pi(p)} = \sign \pi a_1 \wedge \dots \wedge a_p$
+
+    \par $\lambda = \sum_H a^H e_H$ \quad $b^{h_1 \dots h_p}$
+    \par если $h_1 < \dots < h_p$, то $b_H = a_H$. При всех остальных -- по антисимметричности
+    \par $\lambda = \frac{1}{p!} \sum_{h_1, \dots, h_p = 1}^n b^{h_1 \dots h_p} e_{h_1} \wedge \dots \wedge e_{n_p}$
+
+    \par $ $
+    \par $\dim \Lambda^p L = C_n^p$
+    \par $\dim \Lambda^h L = 1$
+    \par $\Lambda^n L = \{c e_1 \wedge e_2 \wedge \dots \wedge e_n \ | \ c \in \R \}$
+    \par Пусть $A \in B(L)$, $\det A = $
+    \par Рассмотрим $g_A(a_1, \dots, a_n) = (Aa_1) \wedge \dots \wedge (Aa_n)$
+    \par $g_A : L^n \rightarrow \Lambda^ L$
+    \par Скажем, что $\exists f_a \in \Lambda^n L \ $ $f_A(a_1 \wedge \dots \wedge a_n) = g_A(a_1, \dots, a_n)$ \quad $f^{A^{-1}}$ умножение на число
+    
+    \par \textbf{\textit{Утверждение: }} $f_A(a_1 \wedge \dots \wedge a_n) = (\det A) a_1 \wedge \dots \wedge a_n$
+    \begin{proof}
+        $a_1, \dots, a_n$ лин. нез. : $0 = 0$
+        \[
+            a_1, \dots, a_n \Rightarrow \text{ это базис } L   
+        \]
+        \[
+            Aa_i = \sum_{k=1}^{n} A_{ki}a_k    
+        \]
+        \[
+            f_A(a_1 \wedge \dots \wedge a_n) = g_A(a_1, \dots, a_n) = (Aa_1) \wedge \dots \wedge (Aa_n) =    
+        \]
+        \[
+            = \left(\sum_{k_1 = 1}^n A_{k_11 a_{k_1}}\right) \wedge \dots \wedge \left(\sum_{k_n = 1}^n A_{k_nn} a_{k_n}\right)    
+        \]
+        \[
+            = \sum_{k_1, \dots, k_n \in \{1, \dots, n\}, k_i \not= k_j, i \not= j} A_{k_11} \dots A_{k_nn} \underbrace{a_{k_1} \wedge \dots \wedge a_{k_n}}_{\sign (k_1, \dots, k_n)}
+        \]
+        \[
+            = (\det A) a_1 \wedge \dots \wedge a_n \Rightarrow
+        \]
+        \[
+            \Rightarrow (Aa_1) \wedge \dots \wedge (Aa_n) \ \det A a_1 \wedge \dots \wedge a_n
+        \]
+    \end{proof}
+
+    \subsection*{Внешее произведение}
+
+    \[
+        (\underbrace{a_1 \wedge \dots \wedge a_p}_{\in \Lambda^p L}) \wedge (\underbrace{b_1 \wedge \dots \wedge b_q}_{\in \Lambda^q L}) := a_1 \wedge \dots (a_p \wedge b_1) \wedge \dots \wedge b_1 \in \Lambda^{p+q} L    
+    \]
+    \par на полиномах -- по линейности
+    \[
+        \underbrace{\lambda}_{\in \Lambda^p L} \wedge \underbrace{\mu}_{\in \Lambda^q L} = (-1)^{pq}\mu \wedge \lambda    
+    \]
+
+    \begin{illustration*}
+        $L = \R^3$
+        \par $(a^1e_1 + a^2e_2 + a^3e_3) \wedge (b^1e_1 + b^2e_2 + b^3e_3) = (a^1b^2 - b^1a^2) e_1 \wedge e^2 + \\ + (a^2b^3 - b^2a^3)e_2 \wedge e_3 + (a^3b^1 - b^3a^1)e_3 \wedge e_1$
+        \par $(a^1e_1 + a^2e_2 + a^3e_3) \wedge (b^1e_2 \wedge e_3 + b^2 e_3 \wedge e_1 + b^3 e_1 \wedge e_2) =$
+        \par $= (a^1b^1 + a^2b^2 + a^3b^3) e_1 \wedge e^2 \wedge e^3$.
+    \end{illustration*}
+
+    \par $A \in B(M, N) \quad \Lambda^pA \in B(\Lambda^p M, \Lambda^p N)$
+    \par $(\Lambda^pA) (\underbrace{a_1 \wedge \dots \wedge a_p}_{\in \Lambda^p M}) = (Aa_1) \wedge \dots \wedge (Aa_p) \quad \Lambda^n A = \det A$
+    \par $e_1, \dots, e_m$ -- базис в $M$
+    \par $f_1, \dots, d_n$ -- базис в $N$
+    \par $\Lambda^p A eH = (\Lambda^p A)(e_{h_1} \wedge \dots \wedge e_{n_p}) = (Ae_{h_1}) \wedge \dots \wedge (Ae_{h_p}) =$
+    \par $= \left(\sum_{k_1 = 1}^n A_{k_1h_1} f_{k_1} \right) \wedge \dots \wedge \left(\sum_{k_p = 1}^n A_{k_1h_p} f_{k_p} \right) = $
+    \par $ = \sum_{k_1, \dots, k_p \in \{1, \dots, n\}, k_i \not= k_j, i \not= j} A_{k_1h_1} \dots A_{k_ph_p} f_{k_1} \wedge \dots \wedge f_{k_p} = $
+    \par $\sum_{k = (k_1, \dots, k_p), 1 \le k_1 < \dots < k_p \le n} \sum_\pi A_{k_1h_1} \dots A_{k_ph_p} \sign{\pi} f_{k_p} = A_{KH}$
+    \par $\Lambda^p A e H = \sum_K A_{KH}f_K$
+    
+    \subsection*{Свойства внешней степени оператора}
+
+    \begin{enumerate}
+        \item \par $\Lambda^p(AB) = \Lambda^p A \Lambda^p B$
+            \par $(\Lambda^p(AB)) (a_1 \wedge \dots \wedge a_p) = (ABa_1) \wedge \dots \wedge (ABa_p) = $
+            \par $= (\Lambda^p A)((Ba_1) \wedge \dots \wedge (Ba_p)) = (\Lambda^p A \Lambda^p B)(a_1 \wedge \dots \wedge a_p)$
+        \item $\lambda \in \Lambda^p M, \ \mu \in \Lambda^q M$
+            \par $(\Lambda^{p+q}A)(\lambda \wedge \mu) = (\Lambda^p A\lambda) \wedge (\Lambda^q A \mu)$
+            \par По линейности для мономов: $\lambda = a_1 \wedge \dots \wedge a_p, \ \mu = b_1 \wedge \dots \wedge b_q$
+            \par $(\Lambda^{p+q}A)(\lambda \wedge \mu) = \underbrace{(Aa_1) \wedge \dots \wedge (Aa_p)}_{\Lambda^p A\lambda} \wedge \underbrace{(Ab_1) \wedge \dots \wedge (Ab_q)}_{\Lambda^p A\mu}$
+    \end{enumerate}
+
+    \subsection*{Индефинитное скалярое произведение}
+
+    \par Скалярное произведение, внутреннее произведение, "индефинитная метрика"
+    \par $(\cdot, \cdot)$ -- симметричная невырожденная билинейная форма
+    \[
+        \text{невырожденность: } (a, b) = 0, \ \forall b \in L \Rightarrow a = 0    
+    \]
+    \[
+        (a, b) = (b, a), \forall a, b \in L    
+    \]
+
+    \begin{illustration*}[Лоренцево произведение]
+        $ $
+        \par $a = (x, y, z, t) \in \R^4 \quad (a_1, a_2) = x_1x_2 + y_1y_2 + z_1x_2 - t_1t_2$
+    \end{illustration*}
+
+    \par Невырожденность $\Leftrightarrow$ \[
+        \bigg((e_i, e_j)\bigg)_{i, j = 1}^n \text{ -- матрица Грамма}, \quad \det \not= 0
+    \]
+    \par $\exists$ ортонормированный базис $\sigma_i, \ i = 1, \dots, n$
+    \[
+        (v_i, v_j) = \mp \delta_{ij}    
+    \]
+    \par $r_+$ -- число знаков $+$, $r_-$ -- число знаков $-$, $s = r_+ - r_-$ -- сигнатура % сделать списком
+    \[
+        f \in L^* \ \exists b_+ \in L \ \forall a \in L \ f(a) = (b_f, a)
+    \]
+
+    \subsection*{Скалярное произведение в $\Lambda^p L$}
+
+    \par $\lambda = a_1 \wedge \dots \wedge a_p$
+    \par $\mu = b_1 \wedge \dots \wedge b_p$
+    \par $(\lambda, \mu)_{\Lambda^p L} := \det \bigg((a_i, b_j)\bigg)_{i, j = 1}^p$
+    \par $\sigma_H = \sigma_{h_1} \wedge \dots \wedge \sigma_{h_p}$
+    \par $(\sigma_H, \sigma_K)_{\Lambda^p L} = 0, \ H \not= K$ (столбец из нулей в матрице $(\sigma_{h_i}, \sigma_{k_j})_{i, j = 1}^p$)
+
+    $(\sigma_H, \sigma_H) = \det \diag \{(\sigma_{h_i}, \sigma_{h_i}), \ i = 1, \dots, p\} = \prod_{i=1}^p (\sigma_{h_i}, \sigma_{h_i}) \not= 0 = \pm 1$
+
+    \par $\Lambda^p L, \ \dim = n$
+    \[
+        \alpha_n \sigma_1 \wedge \wedge \dots \wedge \sigma_{n-1}, \ \alpha_{n-1} = \sigma_1 \wedge \dots \wedge \sigma_{n-2} \wedge \sigma_n    
+    \]
+    \[
+        \alpha_i = \sigma_1 \wedge \dots \wedge \sigma_{i+1} \wedge \dots \wedge \sigma_n    
+    \]
+    \[
+        (\alpha_i, \alpha_j)_{\Lambda^n L} = \prod_{j \in \{1, \dots, n\}, i \not= j} (\sigma_j, \sigma_j) = (-1)^{r_-} (\sigma_i, \sigma_i)_L  
+    \]
+\end{document}

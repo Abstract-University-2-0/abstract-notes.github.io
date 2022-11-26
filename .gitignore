@@ -6,4 +6,5 @@
 **.synctex.*
 **.fdb_latexmk
 diff_eq/bilety/diffury_bilety.pdf
-matan/calculus/live_notes/**
+**.DS_Store**
+# matan/calculus/live_notes/**

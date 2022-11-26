@@ -1,0 +1,247 @@
+\input{../../../preamble.tex}
+\parindent 5px
+
+\usepackage{amsfonts, amssymb, amsmath, mathtools, amsthm}  %% for math symbs
+\usepackage{mathrsfs}
+
+
+\renewcommand{\baselinestretch}{1.3} 
+% \setcounter{lemma}{14}
+\setcounter{theorem}{6}
+
+\begin{document}
+  Доразберемся с несобственными интрегалами.
+
+  Доказательства в качестве упражнения
+
+  \begin{theorem}
+    $f_n: [a, \infty) \to \R$ - набор функций
+    
+    $\forall n \in \N \ f_n \in C\big([a, \infty)\big)$
+
+    $\forall x \in [a, \infty) \ \exists \lim_{n\to\infty}f_n(x) =: \varphi(x)$
+
+    $\forall R > a $ сходимость равномерна на $[a, R]$
+
+    $\forall n \ \exists \int^\infty_a f_n(x)dx$ и сходится равномерно по $n$
+
+    Тогда $$\exists \lim_{n\to\infty} \int^\infty_a f_n(x)dx = \int^\infty_a \varphi(x)dx$$
+
+    $\lim_{n\to\infty}\int^\infty_a \varphi(x)dx = \int^\infty_a \lim_{n\to\infty}f_n(x)dx$
+  \end{theorem}
+  \begin{proof}
+    Упражнение :)
+  \end{proof}
+
+  \begin{theorem}
+    $f:[a, \infty]\times(c,d), \quad f \in C\big([a, \infty) \times (c,d)\big)$
+
+    $\forall x,y \in \big([a, \infty)\times(c,d)\big) \ \exists \frac{\partial f}{\partial y}(x,y) = \varphi(x,y), \varphi \in C\big([a, \infty)\times(c,d)\big)$
+
+    $\forall y \in (c,d) \ \exists \int^\infty_a f(x,y)dx, \exists \int^\infty_a \varphi(x,y)dx$, схю равномерно по $y \in (c,d)$
+
+    Тогда $$\exists \frac{d}{dy}\int^\infty_a f(x,y)dx = \int^\infty_a \varphi(x,y )dx$$
+
+    \par $ $
+
+    $\frac{d}{dy}\int^\infty_a f(x,y)dx = \int^\infty_a \frac{\partial f}{\partial y}(x,y)dx$ ф нерп, дфду непр, справа равн
+
+
+  \end{theorem}
+
+  \begin{theorem}
+    $f: [a, \infty) \times [c,d] \to \R, f \in C\big([a, \infty) \times (c,d)\big)$
+
+    $\int^\infty_a f(x,y)dx $ сходится равномерно по $y \in [c,d]$
+
+    Тогда $$\exists \int_c^d dy \int_a^\infty f(x,y) dx = \int^\infty_a dx \int^d_c f(x,y)dy$$
+  \end{theorem}
+
+  \subsection*{Внешняя алгебра}
+
+  $L$ - линейное пространство размерности $n$, базис: $e_1, \dotsc, e_n$
+
+  $\bigwedge^2 L$ - формальные суммы $\sum^N_{i=1} \alpha_i a_i \land b_i \quad \alpha_i, N \in \R, a_ib_i \in L$,
+
+
+  профакторизованные по отношению эквивалентности, заданному правилами:
+
+  $(\alpha a_1 + \beta b_1) \land a_2 = \alpha a_1 \land a_2 + \beta b_1 \land a_2$
+
+  $a_1 \land a_2 = - a_2 \land a_1$ \quad ($\implies a\land a = 0 \forall a$ )
+
+  $\land $ - внешнее произведение
+
+  Утверждаем, что базис сего пространства...
+
+  $a = \sum^n_{i=1} a^i e_i, b = \sum^n_{i=1}b^i e_i$
+
+  $$a\land b  = \sum^n_{i,j=1}a^ib^je_i\land e_j = \underset{i \neq j}{\sum_{i,j \in \{1,\dotsc, n\}}} a^ib^je_i\land e_j = \underset{i<j}{\sum_{i,j \in \{1,\dotsc,n\}}} (a^ib^j - b^ia^j)e_i\land e_j$$
+
+  $\{e_i \land e_j \mid 1 \le i < j \le n\}$ - базис $\bigwedge^2 L$, $\dim \bigwedge^2L = C_n^2$
+
+  \par Обобщим
+
+  \par $\bigwedge^0L = \R, \bigwedge^1L = L, \\\bigwedge^pL$ - формальные суммы $\sum \alpha a_1 \land a_2 \land \dotsc \land a_p$, факторизованные по правилам 
+  $(\alpha a_1 + \beta b_1) \land a_2 \land \dotsc \land a_p = \alpha a_1 \land a_2 \land \dotsc \land a_p + \beta b_1\land a_2\land \dotsc \land a_p$
+
+  $a_1 \land \dotsc \land a_p$ меняет знак при перестаовке любых двух индексов
+
+  \par $ $
+
+  Базис $\bigwedge^pL$ \quad $e_{h_1}\land e_{h_2} \land \dotsc \land e_{h_p}$, где $1 \le h_1 < h_2 < h_p \le n,\ H = (h_1, \dotsc, h_p)$
+
+  $\dim \bigwedge^pL = C^p_n$
+
+  Если $\pi$ - перестановка $\{1, \dotsc, n\} \quad a_{\pi(1)}\land a_{\pi(2)} \land \dotsc \land a_{\pi(p)} = \text{sign}\pi a_1 \land \dotsc \land a_p$
+
+  $e_H = (e_{h_1}, \dotsc, e_{h_p})$
+
+  Рассмотрим $\lambda = \sum_H a^He_H$.
+
+  Введём коэффициент $b^{h_1\dotsc h_p}$: если $h_1<h_2<\dotsc<h_p$, то $b^H = a^H$. При всех остальных -- по антисимметричности
+
+  $$\lambda = \frac{1}{n!}\sum^n_{h_1,\dotsc, h_p = 1} b^{h_1\dotsc h_p} e_{h_1} \land \dotsc \land e_{h_p}$$
+
+  \par $ $
+
+  $\dim \bigwedge^n L = 1, \bigwedge^nL = \{c\cdot e_1 \land \dotsc \land e_n \mid c \in \R\}$
+
+  $A \in B(L)$ - ограниченный оператор в $L$.
+  
+  $g_A: L^n \to \bigwedge^n L$
+
+  $g_A (a_1, \dotsc, a_n) = (Aa_1)\land \dotsc \land (Aa_n)$
+
+  $\exists f_a \in \bigwedge^n L : f_A(a_1, \dotsc, a_n) = g_A(a_1, \dotsc, a_n)$
+  
+  $f_A$ - умноженное на число 
+
+  \begin{remark}
+    $f_A(a_1 \land \dotsc \land a_n) = (\det A)\cdot a_1 \land\dotsc\land a_n$
+  \end{remark}
+
+  \begin{proof}
+    $a_1,\dotsc, a_n$ линейно зависимы: $0 = 0$;
+
+    $a_1, \dotsc, a_n$ линейно независимы: $\implies $ это базис $L$.
+
+    $Aa_i = \sum^n_{k=1} A_{ki}a_k$
+
+    $f_A(a_1 \land \dotsc \land a_n) = g(a_1, \dotsc, a_n) = (Ae_1) \land \dotsc \land (Aa_n) = \Big(\sum^n_{k_1=1} A_{k_11} a_{k_1}\Big) \land \dotsc \land \Big( \sum^n_{k_n=1} A_{k_nn} a_{k_n} \Big) =$
+
+    $$= \underset{k_i\neq k_j, i \neq j}{\sum_{k_1,\dotsc,k_n \in \{1, \dotsc, n\}}} A_{k_11}\cdot \dotsc \cdot A_{k_nn}\cdot \underbrace{a_{k_1} \land \dots \land a_{k_n}}_{\text{sign}(k_1,\dotsc, k_n)\cdot a_1\land\dotsc\land a_n} = (\det A)\cdot a_1\land\dotsc\land a_n$$
+
+    $$(Aa_1)\land \dotsc \land (Aa_n) = (\det A) a_1\land \dotsc \land a_n$$
+  \end{proof}
+  
+  \subsection*{Внешнее произведение}
+
+  $(\underbrace{a_1 \land \dotsc a_p}_{\in \bigwedge^pL}) \land (\underbrace{b_1 \land \dotsc \land b_q}_{\in \bigwedge^qL}) := a_1\land\dotsc\land a_p\land b_1\land\dotsc\land b_q \in \bigwedge^{p+q}L$
+
+  На полиномах - по линейности
+
+  $\underbrace{\lambda}_{\bigwedge^pL} \bigwedge \underbrace{\mu}_{\bigwedge^qL} = (-1)^{pq}\mu\bigwedge \lambda$
+
+  $a_1 \land \dotsc \land a_p \land$ фото 15:19
+
+  \begin{illustration}
+    $L = \R^3, \quad e_1, e_2, e_3$ - базис
+    
+    $(a^1e_1 + a^2 e_2 + a^3 e_3) \land (b^1e_1 + b^2e_2 + b^3e_3) =\\ (a^1b^2 - b^1a^2)e_1\land e_2 + (a^2b^3 - b^2a^3)e_2 \land e_3 + (a^3b^1 - b^3a^1)e_3 \land e_1$
+
+    Это компоненты $a\times b$
+  \end{illustration}
+  \begin{illustration}
+    $(a^1e_1 + a^2e_2 + a^3e_3) \land (b^1e_2\land e_3 + b^2e_3\land e_1 + b^3 e_1 \land e_2) = \\ 
+    (a^1b^1 + a^2b^2 + a^3b^3)e_1\land e_2 \land e_3$
+
+    Это $a\cdot b$
+  \end{illustration}
+
+  \subsection*{Внешняя степень оператора}
+
+  $A \in B(M, N), \quad \bigwedge^p A  \in B(\bigwedge^p M, \bigwedge^p N)$
+
+  $(\bigwedge^p A) (\underbrace{a_1 \land \dotsc \land a_p}_{\in \bigwedge^p M} )= (Aa_1) \land \dotsc\land (Aa_p), \quad \bigwedge^n A = \det A$, если $M=N$
+
+  $e_1, \dotsc, e_m$ - базис $M$, $f_1, \dotsc, f_n$ - базис $N$.
+
+  $$(\bigwedge^p A)(e_{h_1} \land \dotsc \land e_{h_p}) = (Ae_{h_1}) \land \dotsc\land (Ae_{h_p}) = \Big(\sum_{k_1=1}^n A_{k_1h_1} f_{k_1}\Big) \land \dotsc \land \Big(\sum^n_{k_p = 1} A_{k_ph_p} f_{k_p} \Big)=$$
+
+  $$= \underset{k_i\neq k_j, i \neq j}{\sum_{k_1, \dotsc, k_p \in \{1, \dotsc, n\}} A_{k_1h_1}} \cdot \dotsc \cdot A_{k_ph_p} f_{k_1} \land \dotsc \land f_{k_p} = \underset{1 \le k_1 < \dotsc < k_p \le n}{\sum_{k=(k_1, \dotsc, k_p)}} \sum_\pi A_{k_1h_1} \cdot \dotsc\cdot A_{k_ph_p}\text{sign}\pi \cdot f_k$$
+
+  Обозначим внутреннюю сумму без $f_k$ как $A_{KH}$:
+
+  $\bigwedge^p A e_H = \sum_K A_{KH}f_K, \quad (A_{KH})_{KH}$ - изображающая матрица оператора $\bigwedge^p A$ в паре базисов $(e_H), (f_K)$.
+
+  \subsection*{Свойства внешней степени оператора}
+
+  \begin{proposition}
+    $\bigwedge^p(AB) = \bigwedge^pA\bigwedge^pB$
+  \end{proposition}
+  \begin{proof}
+    $\big(\bigwedge^p(AB)\big)(a_1 \land \dotsc \land a_n) = (ABa_1) \land \dotsc \land (ABa_p) = 
+    (\bigwedge^pA)((Ba_1)\land \dotsc \land (Ba_p)) = (\bigwedge^pA \dotsc \bigwedge^p B)(a_1 \land \dotsc \land a_p)$
+  \end{proof}
+  \begin{proposition}
+    $\lambda \in \bigwedge^pM, \mu \in \bigwedge^qM$
+    
+    $(\bigwedge^{p+q}A)(\lambda\land\mu) = (\bigwedge^pA\lambda)\land(\bigwedge^qA\mu)$
+  \end{proposition}
+  \begin{proof}
+    По линейности разложить, там сразу видно короче
+  \end{proof}
+
+  \subsection*{Индефинитное скалярное произведение}
+
+  Скалярное произведение, внутреннее произведение, "индефинитная метрика"
+
+  $(\cdot, \cdot)$ - невырожденная симметричная билинейная форма.
+  
+  $(a,b) =0 \ \forall b \in L \implies a = 0$
+
+  \setcounter{illustration}{0}
+  \begin{illustration}
+    Лоренцева метрика в $\R^4$.
+
+    $a = (x,y,z,t) \in \R^4, \quad (a_1, a_2) = x_1x_2 + y_1y_2 + z_1z_2 - t_1t_2$
+  \end{illustration}
+
+  Невырожденность ещё можно записать как ненулёвость определителя матрицы Грама.
+
+  $\exists$ ОНБ $\sigma_i, i = 1, \dotsc, n$ \quad $(\sigma_i, \sigma_i) = \pm \delta_{ij}$
+
+  $r_+$ -- число знаков +, $r_-$ -- число знаков -, $s = r_+ - r_-$ -- сигнатура
+
+  $f \in L^* \ \exists b_f \in L : \forall a \in L \ f(a) = (b_f, a)$
+
+  Давайте посчитаем какое пространство получается че\dots
+
+  \subsection*{Скалярное произведение в $\bigwedge^p L$}
+
+  $\lambda = a_1 \land \dotsc \land a_p$
+
+  $\mu = b_1 \land \dotsc\land b_p$
+
+  $$(\lambda, \mu)_{\bigwedge^pL} := \det\big( (a_i, b_j)  \big)^p_{i,j=1}$$
+
+  $\sigma_H = \sigma_{h_1} \land \dotsc \land \sigma_{n_p}$
+
+  $(\sigma_H, \sigma_K)_{\bigwedge^pL} = 0, H \neq K $ (столбец из нулей в матрице $(\sigma_{n_i}, \sigma_{n_j})^p_{i,j=1}$)
+
+  $(\sigma_H, \sigma_H) = \det\text{diag}\{(\sigma_{h_i}, \sigma_{h_i}), i = 1, \dotsc, p \} = \prod^p_{i=1} (\sigma_{n_i}, \sigma_{n_i}) \neq 0 = \pm 1 = (-1)^{r_-}$
+
+  \par $ $
+
+  $\bigwedge^{n-1}L, \dim = n$
+
+  $\alpha_n \sigma_1\land \sigma_2 \land \dotsc \land \sigma_{n-1}, \alpha_{n-1} \sigma_1 \land \dotsc \land \sigma_{n-2} \land \sigma_n $
+
+  $\alpha_i = \sigma_1 \land \dotsc \land \sigma_{i=1} \land s_{i+1} \land \dotsc \land \sigma_n$
+
+  $(\alpha_i, \alpha_i)_{\bigwedge^{n-1}L} = \prod_{j \in \{1, \dotsc, n\}, j \neq i} (\sigma_j, \sigma_j) = (-1)^{r_-} (\sigma_i, \sigma_i)_L$
+
+
+
+\end{document}
